@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharterController : MonoBehaviour
 {
+    [Header"Components"]
+    private 
+
+
+
     private enum State
     {
         Idle,
