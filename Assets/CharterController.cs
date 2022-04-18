@@ -11,37 +11,76 @@ public class CharterController : MonoBehaviour
 
     [Header("GroundCheck Parametrs")]
     [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private float groundCheckRaduis;
+    [SerializeField] private float groundCheckRaduis = 0.18f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private bool isDetectingGround;
     [Header("WallCheck Parametrs")]
     [SerializeField] private Transform wallCheckPoint;
-    [SerializeField] private float wallCheckDistance;
+    [SerializeField] private float wallCheckDistance = 0.5f;
     [SerializeField] private LayerMask whatIsWall;
     [SerializeField] private bool isDetectingWall;
     [Header("LedgeCheck Parametrs")]
     [SerializeField] private Transform ledgeCheckPoint;
-    [SerializeField] private float ledgeCheckDistance;
+    [SerializeField] private float ledgeCheckDistance = 0.5f;
     [SerializeField] private bool isDetectingLedge;
     [Header("Movement Parametrs")]
     [SerializeField] private float movementDirection;
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float movementSpeed = 400f;
     [SerializeField] private bool facingRight = true;
-    [SerializeField] private bool isMoving = false;
+    [SerializeField] private bool canMove = true;
+    [SerializeField] private bool isMoving;
     [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
     [SerializeField] private Vector3 zeroVelocity = Vector3.zero;
     [Header("Jump Parametrs")]
+    [SerializeField] private bool canJump = true;
     [SerializeField] private bool isJump = false;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpForce = 750f;
+    [SerializeField] private bool checkMultuplierJump;
+    [Range(0.1f, 0.9f)] [SerializeField] private float variableJumpHeightMultiplier;
     public UnityEvent OnLandEvent;
 
+    [Header("PrepareBattle Parametrs")]
+    [SerializeField] private float preparingDuration;
+    [SerializeField] private float preparingTimeLeft;
+
+    [Header("Battle Parametrs")]
+    [SerializeField] private bool isReadyForBattle = false;
+    [SerializeField] private bool isInBattle = false;
+    [SerializeField] private float timeForPreparingBattle;
+    [SerializeField] private Animator animWeapon;
+    [SerializeField] private GameObject weaponPoint;
+    [SerializeField] private float rollTime;
+    [SerializeField] private Vector2 startswipeDirection;
+    [SerializeField] private Vector2 endSwipeDirection;
+    [SerializeField] private Vector2 totalDirection;
+
+    [Header("TouchParametrs")]
+    [SerializeField] private float touchDuration;
+    [SerializeField] private float touchTimeForDefense = 0.2f;
+    [SerializeField] private float touchTimeForRoll = 0.2f;
 
 
+    [Header("BattleRoll Parametrs")]
+    [SerializeField] private bool isRoll = false;
+    [SerializeField] private float rollDuration;
+    [SerializeField] private float rollSpeed;
+    [SerializeField] private float dashCooldown;
+
+    [SerializeField] private float rollTimeLeft = 0;
+
+
+
+    [Header("Defense Parametrs")]
+    [SerializeField] private bool isDefense = false;
+    [SerializeField] private float defenseDuration = 1f;
+    [SerializeField] private float defenseTimeLeft;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        animWeapon = weaponPoint.GetComponent<Animator>();
+       
     }
     private void Start()
     {
@@ -49,7 +88,7 @@ public class CharterController : MonoBehaviour
     }
     private void Update()
     {
-        UpdateStateMachinte();
+        UpdateStateMachine();
 
         movementDirection = Input.GetAxisRaw("Horizontal");
 
@@ -63,30 +102,53 @@ public class CharterController : MonoBehaviour
             Flip();
         }
 
-        if (movementDirection != 0 && isDetectingGround && !isMoving)
+
+        if (!isDetectingGround && !isJump && !isInBattle)
         {
-            SwitchState(State.move);
+            SwitchState(State.jump);
         }
-        else if(movementDirection == 0)
+
+
+
+        if (Input.GetButtonDown("Jump") && isDetectingGround)
         {
-            SwitchState(State.idle);
+            if (canJump)
+            {
+                rb.AddForce(new Vector2(0f, jumpForce));
+                SwitchState(State.jump);
+            }
         }
+
+        if (Input.GetKeyDown(KeyCode.B) && !isInBattle)
+        {
+            SwitchState(State.prepareBattle);
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SwitchState(State.stopBattle);
+            isInBattle = false;
+        }
+
+
 
         EnviromentDetecting();
     }
 
     private void FixedUpdate()
     {
+        if (canMove)
+        {
+            Vector3 targetVelocity = new Vector2(movementDirection * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref zeroVelocity, movementSmoothing);
 
-        Vector3 targetVelocity = new Vector2(movementDirection * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref zeroVelocity, movementSmoothing);
+        }
     }
-
 
     private void EnviromentDetecting()
     {
         isDetectingGround = CheckGround();
-
+        isDetectingWall = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
+        isDetectingLedge = Checkledge();
     }
 
     private bool CheckGround()
@@ -104,9 +166,18 @@ public class CharterController : MonoBehaviour
                 if (!wasGrounded)
                 {
                     OnLandEvent.Invoke();
+
                 }
                 return true;
             }
+        }
+        return false;
+    }
+    private bool Checkledge()
+    {
+        if (!Physics2D.Raycast(ledgeCheckPoint.position, Vector2.down, ledgeCheckDistance, whatIsGround) && isDetectingGround)
+        {
+            return true;
         }
         return false;
     }
@@ -119,7 +190,7 @@ public class CharterController : MonoBehaviour
 
     #region StateMachine
 
-    private void UpdateStateMachinte()
+    private void UpdateStateMachine()
     {
         switch (currentState)
         {
@@ -132,6 +203,21 @@ public class CharterController : MonoBehaviour
                 break;
             case State.jump:
                 UpdateJumpState();
+                break;
+            case State.prepareBattle:
+                UpdateBattlePrepareState();
+                break;
+            case State.battle:
+                UpdateBattleState();
+                break;
+            case State.defense:
+                UpdateDefenseBattleState();
+                break;
+            case State.roll:
+                UpdateRollBattleState();
+                break;
+            case State.stopBattle:
+                UpdateStopBattleState();
                 break;
         }
     }
@@ -148,6 +234,21 @@ public class CharterController : MonoBehaviour
             case State.jump:
                 ExitJumpState();
                 break;
+            case State.prepareBattle:
+                ExitBattlePrepareState();
+                break;
+            case State.battle:
+                ExitBattleState();
+                break;
+            case State.defense:
+                ExitDefenseBattleState();
+                break;
+            case State.roll:
+                ExitRollBattleState();
+                break;
+            case State.stopBattle:
+                ExitStopBattleState();
+                break;
         }
         switch (state)
         {
@@ -160,6 +261,21 @@ public class CharterController : MonoBehaviour
             case State.jump:
                 EnterJumpState();
                 break;
+            case State.prepareBattle:
+                EnterBattlePrepareState();
+                break;
+            case State.battle:
+                EnterBattleState();
+                break;
+            case State.defense:
+                EnterDefenseBattleState();
+                break;
+            case State.roll:
+                EnterRollBattleState();
+                break;
+            case State.stopBattle:
+                EnterStopBattleState();
+                break;
         }
         currentState = state;
     }
@@ -170,6 +286,11 @@ public class CharterController : MonoBehaviour
         idle,
         move,
         jump,
+        prepareBattle,
+        battle,
+        defense,
+        roll,
+        stopBattle,
     }
 
     #endregion
@@ -178,11 +299,18 @@ public class CharterController : MonoBehaviour
 
     private void EnterIdleState()
     {
-        Debug.Log("EnterIdleState");
+
         anim.SetBool("Idle", true);
     }
     private void UpdateIdleState()
     {
+        if (canMove)
+        {
+            if (movementDirection != 0)
+            {
+                SwitchState(State.move);
+            }
+        }
 
     }
     private void ExitIdleState()
@@ -197,12 +325,16 @@ public class CharterController : MonoBehaviour
     private void EnterMoveState()
     {
         anim.SetBool("Move", true);
-        Debug.Log("EnterMoveState");
+
         isMoving = true;
     }
     private void UpdateMoveState()
     {
+        if (movementDirection == 0)
+        {
+            SwitchState(State.idle);
 
+        }
     }
     private void ExitMoveState()
     {
@@ -216,16 +348,247 @@ public class CharterController : MonoBehaviour
 
     private void EnterJumpState()
     {
+        checkMultuplierJump = true;
+        isJump = true;
         anim.SetBool("Jump", true);
-        Debug.Log("EnterJumpState");
+
+
     }
     private void UpdateJumpState()
     {
+        anim.SetFloat("VelocityY", rb.velocity.y);
 
+        if (isDetectingGround && !isJump)
+        {
+            SwitchState(State.idle);
+        }
+        if (checkMultuplierJump && !Input.GetButton("Jump"))
+        {
+            checkMultuplierJump = false;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
+        }
     }
     private void ExitJumpState()
     {
         anim.SetBool("Jump", false);
+        isJump = false;
+    }
+
+
+    public void OnlandingEvent()
+    {
+        SwitchState(State.idle);
+        // TODO: Create landing effect
+    }
+    #endregion
+
+    #region PrepareBattleState
+
+    private void EnterBattlePrepareState()
+    {
+        preparingDuration = anim.GetCurrentAnimatorStateInfo(0).length;
+        rb.velocity = Vector2.zero;
+        isInBattle = true;
+        preparingTimeLeft = 0;
+        canJump = false;
+        canMove = false;
+        isReadyForBattle = false;
+        anim.SetBool("PrepareBattle", true);
+
+    }
+    private void UpdateBattlePrepareState()
+    {
+        preparingTimeLeft += Time.deltaTime;
+        if (preparingTimeLeft>= preparingDuration)
+        {
+            SwitchState(State.battle);
+        }
+
+    }
+    private void ExitBattlePrepareState()
+    {
+        isReadyForBattle = false;
+        isInBattle = true;
+        anim.SetBool("PrepareBattle", false);
+    }
+
+
+    #endregion
+
+    #region BattleState
+
+    private void EnterBattleState()
+    {
+        anim.SetBool("BattleIdle", true);
+
+    }
+    private void UpdateBattleState()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animWeapon.SetBool("Preparing", true);
+            startswipeDirection = Vector2.zero;
+            startswipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
+
+
+
+            touchDuration = 0;
+
+        }
+
+
+        if (Input.GetMouseButton(0))
+        {
+            touchDuration += Time.deltaTime;
+
+            if (touchDuration >= 3f)
+            {
+                touchDuration = 0;
+                SwitchState(State.prepareBattle);
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            animWeapon.SetBool("Preparing", false);
+            endSwipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
+
+
+            totalDirection = Vector2.zero;
+            totalDirection = swipeDirection(startswipeDirection, endSwipeDirection);
+            Debug.Log("TotalVector" + totalDirection);
+
+
+
+
+            if (touchDuration <= touchTimeForDefense && totalDirection == Vector2.zero)
+            {
+                Debug.Log("Defense");
+                SwitchState(State.defense);
+
+            }
+            else if (touchDuration <= touchTimeForRoll && totalDirection != Vector2.zero)
+            {
+                SwitchState(State.roll);
+            }
+
+
+        }
+
+    }
+    private void ExitBattleState()
+    {
+        animWeapon.SetBool("Preparing", false);
+        anim.SetBool("BattleIdle", false);
+    }
+
+
+
+    private Vector2 swipeDirection(Vector2 startPos, Vector2 endPos)
+    {
+        var finalDelta = endPos - startPos;
+        if (finalDelta.x < -Mathf.Abs(finalDelta.y)) finalDelta = -Vector2.right;
+        if (finalDelta.x > Mathf.Abs(finalDelta.y)) finalDelta = Vector2.right;
+
+        return finalDelta;
+    }
+
+    #endregion
+
+    #region DefenseBattleState
+
+    private void EnterDefenseBattleState()
+    {
+
+        anim.SetBool("DefenseBattle", true);
+        isDefense = true;
+        defenseTimeLeft = 0;
+    }
+    private void UpdateDefenseBattleState()
+    {
+        defenseTimeLeft += Time.deltaTime;
+        if (defenseTimeLeft >= defenseDuration)
+        {
+            SwitchState(State.battle);
+        }
+    }
+    private void ExitDefenseBattleState()
+    {
+        isDefense = false;
+        anim.SetBool("DefenseBattle", true);
+    }
+
+    #endregion
+
+    #region RollBattleState
+
+    private void EnterRollBattleState()
+    {
+        isRoll = true;
+        rollTimeLeft = 0;
+        anim.SetBool("RollBattle", true);
+        Debug.Log("IsRolling");
+    }
+    private void UpdateRollBattleState()
+    {
+        if (rollTimeLeft <= rollDuration)
+        {
+            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
+            rollTimeLeft += Time.deltaTime;
+        }
+
+        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
+        {
+            rb.velocity = Vector2.zero;
+            SwitchState(State.battle);
+        }
+
+
+
+
+    }
+    private void ExitRollBattleState()
+    {
+        isRoll = false;
+        anim.SetBool("RollBattle", true);
+    }
+
+    private int FacingRightToInt()
+    {
+        if (facingRight)
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+
+    #endregion
+
+    #region StopBattleState
+
+    private void EnterStopBattleState()
+    {
+        anim.SetBool("StopBattle", true);
+        canJump = true;
+        canMove = true;
+
+    }
+    private void UpdateStopBattleState()
+    {
+        if (!isInBattle)
+        {
+            SwitchState(State.idle);
+        }
+    }
+    private void ExitStopBattleState()
+    {
+        anim.SetBool("StopBattle", false);
+        isInBattle = false;
     }
 
     #endregion
