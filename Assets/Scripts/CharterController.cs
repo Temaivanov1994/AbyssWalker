@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharterController : MonoBehaviour
+public class CharterController : MonoBehaviour, IDamageable
 {
     [SerializeField] private State currentState;
     [Header("Components")]
@@ -600,5 +600,10 @@ public class CharterController : MonoBehaviour
         Gizmos.DrawLine(wallCheckPoint.position, wallCheckPoint.position + Vector3.right * wallCheckDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(ledgeCheckPoint.position, ledgeCheckPoint.position + Vector3.down * ledgeCheckDistance);
+    }
+
+    public void TakeDamage(int damage)
+    {
+       
     }
 }
