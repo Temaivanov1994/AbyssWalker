@@ -58,15 +58,24 @@ public class CharterController : MonoBehaviour, IDamageable
     [SerializeField] private float touchDuration;
     [SerializeField] private float touchTimeForDefense = 0.2f;
     [SerializeField] private float touchTimeForRoll = 0.2f;
+    [SerializeField] private float touchTimeForLightAttack = 0.4f;
 
 
     [Header("BattleRoll Parametrs")]
     [SerializeField] private bool isRoll = false;
     [SerializeField] private float rollDuration;
     [SerializeField] private float rollSpeed;
-    [SerializeField] private float dashCooldown;
-
+    
     [SerializeField] private float rollTimeLeft = 0;
+
+
+    [Header("LightAttack Parametrs")]
+    [SerializeField] private bool isAttack = false;
+    [SerializeField] private float attackDuration;
+    [SerializeField] private float attackSpeed;
+   
+
+    [SerializeField] private float attackTimeLeft = 0;
 
 
 
@@ -216,6 +225,12 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.roll:
                 UpdateRollBattleState();
                 break;
+            case State.lightAttack:
+                UpdateLightAttackBattleState();
+                break;
+            case State.hardAttack:
+                UpdateHardAttackBattleState();
+                break;
             case State.stopBattle:
                 UpdateStopBattleState();
                 break;
@@ -246,6 +261,12 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.roll:
                 ExitRollBattleState();
                 break;
+            case State.lightAttack:
+                ExitLightAttackBattleState();
+                break;
+            case State.hardAttack:
+                ExitHardAttackBattleState();
+                break;
             case State.stopBattle:
                 ExitStopBattleState();
                 break;
@@ -273,6 +294,12 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.roll:
                 EnterRollBattleState();
                 break;
+            case State.lightAttack:
+                EnterLightAttackBattleState();
+                break;
+            case State.hardAttack:
+                EnterHardAttackBattleState();
+                break;
             case State.stopBattle:
                 EnterStopBattleState();
                 break;
@@ -290,6 +317,8 @@ public class CharterController : MonoBehaviour, IDamageable
         battle,
         defense,
         roll,
+        lightAttack,
+        hardAttack,
         stopBattle,
     }
 
@@ -472,6 +501,10 @@ public class CharterController : MonoBehaviour, IDamageable
             {
                 SwitchState(State.roll);
             }
+            else if(touchDuration>=touchTimeForRoll && touchDuration<=touchTimeForLightAttack &&totalDirection!= Vector2.zero)
+            {
+                SwitchState(State.lightAttack);
+            }
 
 
         }
@@ -544,14 +577,11 @@ public class CharterController : MonoBehaviour, IDamageable
             SwitchState(State.battle);
         }
 
-
-
-
     }
     private void ExitRollBattleState()
     {
+        anim.SetBool("RollBattle", false);
         isRoll = false;
-        anim.SetBool("RollBattle", true);
     }
 
     private int FacingRightToInt()
@@ -565,6 +595,74 @@ public class CharterController : MonoBehaviour, IDamageable
             return -1;
         }
     }
+
+
+    #endregion
+
+    #region LightAttackBattleState
+
+    private void EnterLightAttackBattleState()
+    {
+        isRoll = true;
+        rollTimeLeft = 0;
+        anim.SetBool("RollBattle", true);
+        Debug.Log("IsRolling");
+    }
+    private void UpdateLightAttackBattleState()
+    {
+        if (rollTimeLeft <= rollDuration)
+        {
+            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
+            rollTimeLeft += Time.deltaTime;
+        }
+
+        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
+        {
+            rb.velocity = Vector2.zero;
+            SwitchState(State.battle);
+        }
+
+    }
+    private void ExitLightAttackBattleState()
+    {
+        anim.SetBool("RollBattle", false);
+        isRoll = false;
+    }
+
+
+
+    #endregion
+
+    #region HardAttackBattleState
+
+    private void EnterHardAttackBattleState()
+    {
+        isRoll = true;
+        rollTimeLeft = 0;
+        anim.SetBool("RollBattle", true);
+        Debug.Log("IsRolling");
+    }
+    private void UpdateHardAttackBattleState()
+    {
+        if (rollTimeLeft <= rollDuration)
+        {
+            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
+            rollTimeLeft += Time.deltaTime;
+        }
+
+        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
+        {
+            rb.velocity = Vector2.zero;
+            SwitchState(State.battle);
+        }
+
+    }
+    private void ExitHardAttackBattleState()
+    {
+        anim.SetBool("RollBattle", false);
+        isRoll = false;
+    }
+
 
 
     #endregion
