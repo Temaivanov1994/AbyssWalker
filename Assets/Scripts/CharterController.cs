@@ -59,37 +59,41 @@ public class CharterController : MonoBehaviour, IDamageable
     [SerializeField] private float touchTimeForDefense = 0.2f;
     [SerializeField] private float touchTimeForRoll = 0.2f;
     [SerializeField] private float touchTimeForLightAttack = 0.4f;
-
-
-    [Header("BattleRoll Parametrs")]
-    [SerializeField] private bool isRoll = false;
-    [SerializeField] private float rollDuration;
-    [SerializeField] private float rollSpeed;
-    
-    [SerializeField] private float rollTimeLeft = 0;
-
-
-    [Header("LightAttack Parametrs")]
-    [SerializeField] private bool isAttack = false;
-    [SerializeField] private float attackDuration;
-    [SerializeField] private float attackSpeed;
-   
-
-    [SerializeField] private float attackTimeLeft = 0;
-
-
+    [SerializeField] private float touchTimeForHardAttack = 0.6f;
+    [SerializeField] private float touchTimeForFailPreparing = 1f;
 
     [Header("Defense Parametrs")]
     [SerializeField] private bool isDefense = false;
     [SerializeField] private float defenseDuration = 1f;
     [SerializeField] private float defenseTimeLeft;
 
+    [Header("BattleRoll Parametrs")]
+    [SerializeField] private bool isRoll = false;
+    [SerializeField] private float rollDuration;
+    [SerializeField] private float rollSpeed;
+    [SerializeField] private float rollTimeLeft = 0;
+
+    [Header("Attack Parametrs")]
+    [SerializeField] private bool isAttack = false;
+    [SerializeField] private float attackDuration;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float attackTimeLeft = 0;
+
+
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource playerSource;
+    [SerializeField] private AudioClip someSoundTest;
+    [SerializeField] private AudioClip soundDefense;
+    [SerializeField] private AudioClip soundReadyLightAttack;
+    [SerializeField] private AudioClip soundReadyHardAttack;
+    [SerializeField] private AudioClip soundFailPreparing;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         animWeapon = weaponPoint.GetComponent<Animator>();
-       
+
     }
     private void Start()
     {
@@ -101,15 +105,21 @@ public class CharterController : MonoBehaviour, IDamageable
 
         movementDirection = Input.GetAxisRaw("Horizontal");
 
-        if (movementDirection > 0 && !facingRight)
-        {
-            Flip();
-        }
 
-        else if (movementDirection < 0 && facingRight)
-        {
-            Flip();
-        }
+
+
+
+        
+
+            if (movementDirection > 0  && !facingRight || totalDirection == Vector2.right && !facingRight)
+            {
+                Flip();
+            }
+            else if (movementDirection < 0 && facingRight || totalDirection == Vector2.left && facingRight)
+            {
+                Flip();
+            }
+       
 
 
         if (!isDetectingGround && !isJump && !isInBattle)
@@ -428,7 +438,7 @@ public class CharterController : MonoBehaviour, IDamageable
     private void UpdateBattlePrepareState()
     {
         preparingTimeLeft += Time.deltaTime;
-        if (preparingTimeLeft>= preparingDuration)
+        if (preparingTimeLeft >= preparingDuration)
         {
             SwitchState(State.battle);
         }
@@ -461,7 +471,6 @@ public class CharterController : MonoBehaviour, IDamageable
             startswipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
 
 
-
             touchDuration = 0;
 
         }
@@ -471,15 +480,30 @@ public class CharterController : MonoBehaviour, IDamageable
         {
             touchDuration += Time.deltaTime;
 
-            if (touchDuration >= 3f)
+            if (touchDuration == touchTimeForDefense)
+            {
+                playerSource.PlayOneShot(someSoundTest);
+            }
+            else if (touchDuration == touchTimeForLightAttack)
+            {
+                playerSource.PlayOneShot(soundReadyLightAttack);
+            }
+            else if (touchDuration == touchTimeForHardAttack)
+            {
+                playerSource.PlayOneShot(soundReadyHardAttack);
+            }
+            else if (touchDuration >= touchTimeForFailPreparing)
             {
                 touchDuration = 0;
                 SwitchState(State.prepareBattle);
+
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            Debug.Log(touchDuration);
+
             animWeapon.SetBool("Preparing", false);
             endSwipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
 
@@ -487,7 +511,6 @@ public class CharterController : MonoBehaviour, IDamageable
             totalDirection = Vector2.zero;
             totalDirection = swipeDirection(startswipeDirection, endSwipeDirection);
             Debug.Log("TotalVector" + totalDirection);
-
 
 
 
@@ -501,12 +524,16 @@ public class CharterController : MonoBehaviour, IDamageable
             {
                 SwitchState(State.roll);
             }
-            else if(touchDuration>=touchTimeForRoll && touchDuration<=touchTimeForLightAttack &&totalDirection!= Vector2.zero)
+            else if (touchDuration >= touchTimeForRoll && touchDuration <= touchTimeForLightAttack && totalDirection != Vector2.zero)
             {
                 SwitchState(State.lightAttack);
             }
+            else if (touchDuration >= touchTimeForLightAttack && touchDuration <= touchTimeForHardAttack && totalDirection != Vector2.zero)
+            {
+                SwitchState(State.hardAttack);
+            }
 
-
+            touchDuration = 0;
         }
 
     }
@@ -537,6 +564,7 @@ public class CharterController : MonoBehaviour, IDamageable
         anim.SetBool("DefenseBattle", true);
         isDefense = true;
         defenseTimeLeft = 0;
+
     }
     private void UpdateDefenseBattleState()
     {
@@ -549,7 +577,7 @@ public class CharterController : MonoBehaviour, IDamageable
     private void ExitDefenseBattleState()
     {
         isDefense = false;
-        anim.SetBool("DefenseBattle", true);
+        anim.SetBool("DefenseBattle", false);
     }
 
     #endregion
@@ -603,20 +631,21 @@ public class CharterController : MonoBehaviour, IDamageable
 
     private void EnterLightAttackBattleState()
     {
-        isRoll = true;
-        rollTimeLeft = 0;
-        anim.SetBool("RollBattle", true);
-        Debug.Log("IsRolling");
+        isAttack = true;
+        attackTimeLeft = 0;
+        anim.SetBool("LightAttack", true);
+        Debug.Log("isAttack");
+
     }
     private void UpdateLightAttackBattleState()
     {
-        if (rollTimeLeft <= rollDuration)
+        if (attackTimeLeft <= attackDuration)
         {
-            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
-            rollTimeLeft += Time.deltaTime;
+            rb.velocity = new Vector2(attackSpeed, 0) * totalDirection;
+            attackTimeLeft += Time.deltaTime;
         }
 
-        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
+        if (attackTimeLeft >= attackDuration || isDetectingWall || isDetectingLedge)
         {
             rb.velocity = Vector2.zero;
             SwitchState(State.battle);
@@ -625,8 +654,8 @@ public class CharterController : MonoBehaviour, IDamageable
     }
     private void ExitLightAttackBattleState()
     {
-        anim.SetBool("RollBattle", false);
-        isRoll = false;
+        anim.SetBool("LightAttack", false);
+        isAttack = false;
     }
 
 
@@ -702,6 +731,6 @@ public class CharterController : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-       
+
     }
 }
