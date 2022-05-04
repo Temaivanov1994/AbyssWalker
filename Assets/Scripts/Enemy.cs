@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
-    
+
     private enum State
     {
         Idle,
@@ -58,22 +56,25 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float melleAttackRadius = 0.84f;
     [SerializeField] private int melleAttackDamage = 1;
     private bool playerDetectedInCloseRangeAction;
-    private bool finishAttack;
+    [SerializeField] private bool isAttack = false;
+    [SerializeField] private float attackDuration;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float attackTimeLeft = 0;
 
     [Header("Damaged")]
     [SerializeField] private float damagedDuration = 0.2f;
     private float lastDamageTime;
 
-    [Header("Loot")]
+    /*[Header("Loot")]
     [SerializeField] private GameObject Loot;
     private bool isLooted = false;
-    [SerializeField] private Transform LootPoint;
+    [SerializeField] private Transform LootPoint;*/
 
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource steps;
-    [SerializeField] private AudioSource hurtSound;
-    [SerializeField] private AudioSource detectSound;
+    /* [Header("Audio")]
+     [SerializeField] private AudioSource steps;
+     [SerializeField] private AudioSource hurtSound;
+     [SerializeField] private AudioSource detectSound;*/
 
 
 
@@ -107,14 +108,15 @@ public class Enemy : MonoBehaviour
     private GameObject hitPartical;
     private Rigidbody2D rb;
     private Animator anim;
-   
 
+    int IDamageable.maxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    int IDamageable.currentHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     private void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
         stunCurrentHealth = stunMaxHealth;
         facingDirection = 1;
@@ -122,6 +124,13 @@ public class Enemy : MonoBehaviour
 
     }
     private void Update()
+    {
+        StateMachine();
+    }
+
+
+    #region StateMachine
+    private void StateMachine()
     {
         switch (currentState)
         {
@@ -155,324 +164,6 @@ public class Enemy : MonoBehaviour
 
 
         }
-    }
-
-
-
-    //IdleState________________________________________________________
-
-    private void EnterIdleState()
-    {
-        anim.SetBool("Idle", true);
-        IdleStartTime = Time.time;
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        IdleDuration = Random.Range(IdleMinTimeDuration, IdleMaxTimeDuration);
-    }
-    private void UpdateIdleState()
-    {
-        DoChecks();
-        if (Time.time >= IdleStartTime + IdleDuration)
-        {
-            SwitchState(State.Walk);
-        }
-
-
-
-    }
-    private void ExitIdleState()
-    {
-        anim.SetBool("Idle", false);
-        Flip();
-    }
-
-    //WalkState_________________________________________________________
-
-    private void EnterWalkState()
-    {
-        anim.SetBool("Walk", true);
-    }
-    private void UpdateWalkState()
-    {
-        DoChecks();
-
-        if (!groundDetected || wallDetected)
-        {
-            SwitchState(State.Idle);
-        }
-        else if (playerDetectedInMaxAgroDistance)
-        {
-            SwitchState(State.PlayerDetected);
-        }
-        else
-        {
-            movement.Set(moveSpeed * facingDirection, rb.velocity.y);
-            rb.velocity = movement;
-        }
-    }
-    private void ExitWalkState()
-    {
-        anim.SetBool("Walk", false);
-    }
-    // StunState_________________________________________________________
-
-    private void EnterStunState()
-    {
-        StunStartTime = Time.time;
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        anim.SetBool("Stun", true);
-        stunCurrentHealth = stunMaxHealth;
-    }
-    private void UpdateStunState()
-    {
-        if (Time.time >= StunStartTime + StunDuration)
-        {
-            if (playerDetectedInCloseRangeAction)
-            {
-                SwitchState(State.PlayerDetected);
-            }
-            else
-            {
-                SwitchState(State.SerchPlayer);
-
-            }
-        }
-
-
-    }
-    private void ExitStunState()
-    {
-        anim.SetBool("Stun", false);
-    }
-    //ChargeState________________________________________________________
-    private void EnterChargeState()
-    {
-        anim.SetBool("Charge", true);
-        ChargeStartTime = Time.time;
-    }
-    private void UpdateChargeState()
-    {
-        DoChecks();
-
-        if (Time.time >= ChargeStartTime + ChargeDuration || !groundDetected || wallDetected)
-        {
-
-            SwitchState(State.SerchPlayer);
-        }
-        else
-        {
-            movement.Set(chargeMoveSpeed * facingDirection, rb.velocity.y);
-            rb.velocity = movement;
-            if (playerDetectedInCloseRangeAction)
-            {
-                SwitchState(State.MelleAttack);
-            }
-        }
-    }
-    private void ExitChargeState()
-    {
-        anim.SetBool("Charge", false);
-    }
-
-    //PlayerDetected________________________________________________
-    private void EnterPlayerDetectedState()
-    {
-        anim.SetBool("PlayerDetected", true);
-        detectSound.Play();
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        PlayerDetectedStartTime = Time.time;
-    }
-    private void UpdatePlayerDetectedState()
-    {
-        if (Time.time >= PlayerDetectedStartTime + PlayerDetectedDuration)
-        {
-            SwitchState(State.Charge);
-        }
-        else if (playerDetectedInCloseRangeAction)
-        {
-            SwitchState(State.MelleAttack);
-        }
-    }
-    private void ExitPlayerDetectedState()
-    {
-        anim.SetBool("PlayerDetected", false);
-    }
-    //SerchPlayer___________________________________________________
-    private void EnterSerchPlayerState()
-    {
-        anim.SetBool("Idle", true);
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        amountTurns = Random.Range(2, 5);
-        amountTurnsDone = 0;
-        isAllTurnsDone = false;
-        isAllTunrsTimeDone = false;
-    }
-    private void UpdateSerchPlayerState()
-    {
-
-        if (turnImmediately)
-        {
-            Flip();
-            lastTurnTime = Time.time;
-            amountTurnsDone++;
-            turnImmediately = false;
-
-        }
-        else if (Time.time >= lastTurnTime + timeBetweenTurns && !isAllTurnsDone)
-        {
-
-            Flip();
-            DoChecks();
-            lastTurnTime = Time.time;
-            amountTurnsDone++;
-        }
-
-        if (amountTurnsDone >= amountTurns)
-        {
-            isAllTurnsDone = true;
-        }
-
-        if (Time.time >= lastTurnTime + timeBetweenTurns && isAllTurnsDone)
-        {
-            isAllTunrsTimeDone = true;
-        }
-
-        if (playerDetectedInMaxAgroDistance && groundDetected)
-        {
-            SwitchState(State.PlayerDetected);
-        }
-        else if (isAllTunrsTimeDone)
-        {
-            SwitchState(State.Walk);
-        }
-
-    }
-    private void ExitSerchPlayerState()
-    {
-        anim.SetBool("Idle", false);
-    }
-    //MelleAttack________________________________________________________
-    private void EnterMelleAttackState()
-    {
-        anim.SetBool("MelleAttack", true);
-        movement.Set(0, rb.velocity.y);
-       
-        rb.velocity = movement;
-        finishAttack = false;
-
-
-    }
-    private void UpdateMelleAttackState()
-    {
-        DoChecks();
-        if (finishAttack)
-        {
-            if (playerDetectedInCloseRangeAction)
-            {
-                SwitchState(State.MelleAttack);
-            }
-            else
-            {
-                SwitchState(State.SerchPlayer);
-            }
-        }
-    }
-    private void ExitMelleAttackState()
-    {
-        anim.SetBool("MelleAttack", false);
-    }
-
-    //DeadState____________________________________________________
-    private void EnterDeadState()
-    {
-        anim.SetBool("Dead", true);
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        gameObject.layer = 12;
-    }
-    private void UpdateDeadState()
-    {
-
-    }
-    private void ExitDeadState()
-    {
-
-    }
-
-    //DamagedState__________________________________________
-    private void EnterDamagedState()
-    {
-
-        anim.SetBool("Damaged", true);
-        lastDamageTime = Time.time;
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-    }
-    private void UpdateDamagedState()
-    {
-        if (Time.time >= lastDamageTime + damagedDuration && currentHealth > 0)
-        {
-            if (stunCurrentHealth <= 0)
-            {
-
-                SwitchState(State.Stun);
-            }
-            else
-            {
-                SwitchState(State.SerchPlayer);
-            }
-        }
-        else if (currentHealth <= 0)
-        {
-            SwitchState(State.Dead);
-        }
-
-    }
-    private void ExitDamagedState()
-    {
-        anim.SetBool("Damaged", false);
-    }
-
-
-    //AudioSources__________________________________________________
-    public void StepsSound()
-    {
-        steps.Play();
-    }
-
-    //OtherFunctions________________________________________________
-
-
-    private void DoChecks()
-    {
-        groundDetected = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckDistance, whatIsGround);
-        wallDetected = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
-        playerDetectedInMinAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);
-        playerDetectedInMaxAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
-        playerDetectedInCloseRangeAction = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
-
-    }
-    public void FinishAttack()
-    {
-        finishAttack = true;
-    }
-   
-
-    private void GetLoot()
-    {
-
-        isLooted = true;
-        Instantiate(Loot, LootPoint.position, Quaternion.identity);
-    }
-
-   
-    private void Flip()
-    {
-        facingDirection *= -1;
-        transform.Rotate(0, 180, 0);
     }
     private void SwitchState(State state)
     {
@@ -539,6 +230,321 @@ public class Enemy : MonoBehaviour
         currentState = state;
     }
 
+    #endregion
+
+    #region IdleState
+
+    private void EnterIdleState()
+    {
+        anim.SetBool("Idle", true);
+        IdleStartTime = Time.time;
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        IdleDuration = Random.Range(IdleMinTimeDuration, IdleMaxTimeDuration);
+    }
+    private void UpdateIdleState()
+    {
+        DoChecks();
+        if (Time.time >= IdleStartTime + IdleDuration)
+        {
+            SwitchState(State.Walk);
+        }
+
+
+
+    }
+    private void ExitIdleState()
+    {
+        anim.SetBool("Idle", false);
+        Flip();
+    }
+
+
+    #endregion
+
+    #region WalkState
+    private void EnterWalkState()
+    {
+        anim.SetBool("Walk", true);
+    }
+    private void UpdateWalkState()
+    {
+        DoChecks();
+
+        if (!groundDetected || wallDetected)
+        {
+            SwitchState(State.Idle);
+        }
+        else if (playerDetectedInMaxAgroDistance)
+        {
+            SwitchState(State.PlayerDetected);
+        }
+        else
+        {
+            movement.Set(moveSpeed * facingDirection, rb.velocity.y);
+            rb.velocity = movement;
+        }
+    }
+    private void ExitWalkState()
+    {
+        anim.SetBool("Walk", false);
+    }
+
+    #endregion
+
+    #region StunState
+    private void EnterStunState()
+    {
+        StunStartTime = Time.time;
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        anim.SetBool("Stun", true);
+        stunCurrentHealth = stunMaxHealth;
+    }
+    private void UpdateStunState()
+    {
+        if (Time.time >= StunStartTime + StunDuration)
+        {
+            if (playerDetectedInCloseRangeAction)
+            {
+                SwitchState(State.PlayerDetected);
+            }
+            else
+            {
+                SwitchState(State.SerchPlayer);
+
+            }
+        }
+
+
+    }
+    private void ExitStunState()
+    {
+        anim.SetBool("Stun", false);
+    }
+
+    #endregion
+
+    #region ChargeState
+    private void EnterChargeState()
+    {
+        anim.SetBool("Charge", true);
+        ChargeStartTime = Time.time;
+    }
+    private void UpdateChargeState()
+    {
+        DoChecks();
+
+        if (Time.time >= ChargeStartTime + ChargeDuration || !groundDetected || wallDetected)
+        {
+
+            SwitchState(State.SerchPlayer);
+        }
+        else
+        {
+            movement.Set(chargeMoveSpeed * facingDirection, rb.velocity.y);
+            rb.velocity = movement;
+            if (playerDetectedInCloseRangeAction)
+            {
+                SwitchState(State.MelleAttack);
+            }
+        }
+    }
+    private void ExitChargeState()
+    {
+        anim.SetBool("Charge", false);
+    }
+
+    #endregion
+
+    #region DetectedPlayer
+    private void EnterPlayerDetectedState()
+    {
+        anim.SetBool("PlayerDetected", true);
+        /*detectSound.Play();*/
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        PlayerDetectedStartTime = Time.time;
+    }
+    private void UpdatePlayerDetectedState()
+    {
+        if (Time.time >= PlayerDetectedStartTime + PlayerDetectedDuration)
+        {
+            SwitchState(State.Charge);
+        }
+        else if (playerDetectedInCloseRangeAction)
+        {
+            SwitchState(State.MelleAttack);
+        }
+    }
+    private void ExitPlayerDetectedState()
+    {
+        anim.SetBool("PlayerDetected", false);
+    }
+    //SerchPlayer___________________________________________________
+
+    #endregion
+
+    #region SerchPlayer
+    private void EnterSerchPlayerState()
+    {
+        anim.SetBool("Idle", true);
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        amountTurns = Random.Range(2, 5);
+        amountTurnsDone = 0;
+        isAllTurnsDone = false;
+        isAllTunrsTimeDone = false;
+    }
+    private void UpdateSerchPlayerState()
+    {
+
+        if (turnImmediately)
+        {
+            Flip();
+            lastTurnTime = Time.time;
+            amountTurnsDone++;
+            turnImmediately = false;
+
+        }
+        else if (Time.time >= lastTurnTime + timeBetweenTurns && !isAllTurnsDone)
+        {
+
+            Flip();
+            DoChecks();
+            lastTurnTime = Time.time;
+            amountTurnsDone++;
+        }
+
+        if (amountTurnsDone >= amountTurns)
+        {
+            isAllTurnsDone = true;
+        }
+
+        if (Time.time >= lastTurnTime + timeBetweenTurns && isAllTurnsDone)
+        {
+            isAllTunrsTimeDone = true;
+        }
+
+        if (playerDetectedInMaxAgroDistance && groundDetected)
+        {
+            SwitchState(State.PlayerDetected);
+        }
+        else if (isAllTunrsTimeDone)
+        {
+            SwitchState(State.Walk);
+        }
+
+    }
+    private void ExitSerchPlayerState()
+    {
+        anim.SetBool("Idle", false);
+    }
+
+    #endregion  
+
+    #region MelleAttack
+    private void EnterMelleAttackState()
+    {
+        anim.SetBool("MelleAttack", true);
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        isAttack = true;
+        attackTimeLeft = 0;
+
+    }
+    private void UpdateMelleAttackState()
+    {
+        attackTimeLeft += Time.deltaTime;
+        DoChecks();
+        if (attackTimeLeft >= attackDuration)
+        {
+
+            SwitchState(State.SerchPlayer);
+
+        }
+    }
+    private void ExitMelleAttackState()
+    {
+        isAttack = false;
+        anim.SetBool("MelleAttack", false);
+    }
+    #endregion
+
+    #region Damaged
+    private void EnterDamagedState()
+    {
+
+        anim.SetBool("Damaged", true);
+        lastDamageTime = Time.time;
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+    }
+    private void UpdateDamagedState()
+    {
+        if (Time.time >= lastDamageTime + damagedDuration && currentHealth > 0)
+        {
+            if (stunCurrentHealth <= 0)
+            {
+
+                SwitchState(State.Stun);
+            }
+            else
+            {
+                SwitchState(State.SerchPlayer);
+            }
+        }
+        else if (currentHealth <= 0)
+        {
+            SwitchState(State.Dead);
+        }
+
+    }
+    private void ExitDamagedState()
+    {
+        anim.SetBool("Damaged", false);
+    }
+    #endregion
+
+    #region Dead
+    private void EnterDeadState()
+    {
+        anim.SetBool("Dead", true);
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
+        
+    }
+    private void UpdateDeadState()
+    {
+
+    }
+    private void ExitDeadState()
+    {
+
+    }
+    #endregion
+    private void DoChecks()
+    {
+        groundDetected = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckDistance, whatIsGround);
+        wallDetected = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
+        playerDetectedInMinAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);
+        playerDetectedInMaxAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
+        playerDetectedInCloseRangeAction = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
+
+    }
+
+
+
+
+
+
+    private void Flip()
+    {
+        facingDirection *= -1;
+        transform.Rotate(0, 180, 0);
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + (Vector3)Vector2.down * groundCheckDistance);
@@ -552,6 +558,16 @@ public class Enemy : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(melleAttackPoint.position, melleAttackRadius);
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+                        SwitchState(State.Dead);
+           
+        }
     }
 }
 

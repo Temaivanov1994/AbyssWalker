@@ -4,95 +4,11 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharterController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private State currentState;
-    [Header("Components")]
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
-
-    [Header("GroundCheck Parametrs")]
-    [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private float groundCheckRaduis = 0.18f;
-    [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private bool isDetectingGround;
-    [Header("WallCheck Parametrs")]
-    [SerializeField] private Transform wallCheckPoint;
-    [SerializeField] private float wallCheckDistance = 0.5f;
-    [SerializeField] private LayerMask whatIsWall;
-    [SerializeField] private bool isDetectingWall;
-    [Header("LedgeCheck Parametrs")]
-    [SerializeField] private Transform ledgeCheckPoint;
-    [SerializeField] private float ledgeCheckDistance = 0.5f;
-    [SerializeField] private bool isDetectingLedge;
-    [Header("Movement Parametrs")]
-    [SerializeField] private float movementDirection;
-    [SerializeField] private float movementSpeed = 400f;
-    [SerializeField] private bool facingRight = true;
-    [SerializeField] private bool canMove = true;
-    [SerializeField] private bool isMoving;
-    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
-    [SerializeField] private Vector3 zeroVelocity = Vector3.zero;
-    [Header("Jump Parametrs")]
-    [SerializeField] private bool canJump = true;
-    [SerializeField] private bool isJump = false;
-    [SerializeField] private float jumpForce = 750f;
-    [SerializeField] private bool checkMultuplierJump;
-    [Range(0.1f, 0.9f)] [SerializeField] private float variableJumpHeightMultiplier;
-    public UnityEvent OnLandEvent;
-
-    [Header("PrepareBattle Parametrs")]
-    [SerializeField] private float preparingDuration;
-    [SerializeField] private float preparingTimeLeft;
-
-    [Header("Battle Parametrs")]
-    [SerializeField] private bool isReadyForBattle = false;
-    [SerializeField] private bool isInBattle = false;
-    [SerializeField] private float timeForPreparingBattle;
-    [SerializeField] private Animator animWeapon;
-    [SerializeField] private GameObject weaponPoint;
-    [SerializeField] private float rollTime;
-    [SerializeField] private Vector2 startswipeDirection;
-    [SerializeField] private Vector2 endSwipeDirection;
-    [SerializeField] private Vector2 totalDirection;
-
-    [Header("TouchParametrs")]
-    [SerializeField] private float touchDuration;
-    [SerializeField] private float touchTimeForDefense = 0.2f;
-    [SerializeField] private float touchTimeForRoll = 0.2f;
-    [SerializeField] private float touchTimeForLightAttack = 0.4f;
-    [SerializeField] private float touchTimeForHardAttack = 0.6f;
-    [SerializeField] private float touchTimeForFailPreparing = 1f;
-
-    [Header("Defense Parametrs")]
-    [SerializeField] private bool isDefense = false;
-    [SerializeField] private float defenseDuration = 1f;
-    [SerializeField] private float defenseTimeLeft;
-
-    [Header("BattleRoll Parametrs")]
-    [SerializeField] private bool isRoll = false;
-    [SerializeField] private float rollDuration;
-    [SerializeField] private float rollSpeed;
-    [SerializeField] private float rollTimeLeft = 0;
-
-    [Header("Attack Parametrs")]
-    [SerializeField] private bool isAttack = false;
-    [SerializeField] private float attackDuration;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float attackTimeLeft = 0;
-
-
-
-    [Header("Audio")]
-    [SerializeField] private AudioSource playerSource;
-    [SerializeField] private AudioClip someSoundTest;
-    [SerializeField] private AudioClip soundDefense;
-    [SerializeField] private AudioClip soundReadyLightAttack;
-    [SerializeField] private AudioClip soundReadyHardAttack;
-    [SerializeField] private AudioClip soundFailPreparing;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
-        animWeapon = weaponPoint.GetComponent<Animator>();
 
     }
     private void Start()
@@ -101,33 +17,25 @@ public class CharterController : MonoBehaviour, IDamageable
     }
     private void Update()
     {
+
+        
         UpdateStateMachine();
 
         movementDirection = Input.GetAxisRaw("Horizontal");
 
+        if (movementDirection > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (movementDirection < 0 && facingRight)
+        {
+            Flip();
+        }
 
-
-
-
-        
-
-            if (movementDirection > 0  && !facingRight || totalDirection == Vector2.right && !facingRight)
-            {
-                Flip();
-            }
-            else if (movementDirection < 0 && facingRight || totalDirection == Vector2.left && facingRight)
-            {
-                Flip();
-            }
-       
-
-
-        if (!isDetectingGround && !isJump && !isInBattle)
+        if (!isDetectingGround && !isJump && !isAttack)
         {
             SwitchState(State.jump);
         }
-
-
 
         if (Input.GetButtonDown("Jump") && isDetectingGround)
         {
@@ -138,16 +46,22 @@ public class CharterController : MonoBehaviour, IDamageable
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.B) && !isInBattle)
+        if (Input.GetMouseButtonDown(0) && !isAttack)
         {
-            SwitchState(State.prepareBattle);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SwitchState(State.stopBattle);
-            isInBattle = false;
-        }
+            if (isDetectingGround)
+            {
+                SwitchState(State.groundAttack);
+            }
+            else
+            {
+                SwitchState(State.flyAttack);
+            }
 
+        }
+        if (Input.GetMouseButtonDown(1) && !isDefense)
+        {
+            SwitchState(State.defense);
+        }
 
 
         EnviromentDetecting();
@@ -163,13 +77,160 @@ public class CharterController : MonoBehaviour, IDamageable
         }
     }
 
+    private void Flip()
+    {
+        if (!isAttack)
+        {
+            facingRight = !facingRight;
+
+            transform.Rotate(0, 180, 0);
+        }
+    }
+
+
+    #region StateMachine
+
+    [SerializeField] private State currentState;
+    private void UpdateStateMachine()
+    {
+        switch (currentState)
+        {
+
+            case State.idle:
+                UpdateIdleState();
+                break;
+            case State.move:
+                UpdateMoveState();
+                break;
+            case State.jump:
+                UpdateJumpState();
+                break;
+            case State.defense:
+                UpdateDefenseBattleState();
+                break;
+            case State.flyAttack:
+                UpdateFlyAttackBattleState();
+                break;
+            case State.groundAttack:
+                UpdateGroundAttackState();
+                break;
+
+        }
+    }
+    private void SwitchState(State state)
+    {
+        switch (currentState)
+        {
+            case State.idle:
+                ExitIdleState();
+                break;
+            case State.move:
+                ExitMoveState();
+                break;
+            case State.jump:
+                ExitJumpState();
+                break;
+            case State.defense:
+                ExitDefenseBattleState();
+                break;
+            case State.flyAttack:
+                ExitFlyAttackBattleState();
+                break;
+            case State.groundAttack:
+                ExitGroundAttackState();
+                break;
+
+        }
+        switch (state)
+        {
+            case State.idle:
+                EnterIdleState();
+                break;
+            case State.move:
+                EnterMoveState();
+                break;
+            case State.jump:
+                EnterJumpState();
+                break;
+            case State.defense:
+                EnterDefenseBattleState();
+                break;
+            case State.flyAttack:
+                EnterFlyAttackBattleState();
+                break;
+            case State.groundAttack:
+                EnterGroundAttackState();
+                break;
+
+        }
+        currentState = state;
+    }
+
+
+    private enum State
+    {
+        idle,
+        move,
+        jump,
+        defense,
+        roll,
+        flyAttack,
+        groundAttack,
+        stopBattle,
+    }
+
+    #endregion
+
+    #region CheckParametrs and Metods and Components
+
+
+    [Header("Components")]
+    private Rigidbody2D rb;
+    private Animator anim;
+
+    [Header("GroundCheck Parametrs")]
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float groundCheckRaduis = 0.18f;
+    [SerializeField] private LayerMask whatIsGround;
+    private bool isDetectingGround;
+    [Header("WallCheck Parametrs")]
+    [SerializeField] private Transform wallCheckPoint;
+    [SerializeField] private float wallCheckDistance = 0.5f;
+    [SerializeField] private LayerMask whatIsWall;
+    private bool isDetectingWall;
+    [Header("LedgeCheck Parametrs")]
+    [SerializeField] private Transform ledgeCheckPoint;
+    [SerializeField] private float ledgeCheckDistance = 0.5f;
+    private bool isDetectingLedge;
+
+    [Header("EnemyCheck Paramerts")]
+    [SerializeField] private Transform enemyCheckPoint;
+    [SerializeField] private float enemyCheckDistance = 10f;
+    [SerializeField] private bool isDetectingEnemy;
+    [SerializeField] private LayerMask whatIsEnemy;
+
+
+
+
     private void EnviromentDetecting()
     {
         isDetectingGround = CheckGround();
         isDetectingWall = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
         isDetectingLedge = Checkledge();
+        isDetectingEnemy = CheckEnemy();
     }
 
+
+    private bool CheckEnemy()
+    {
+
+        if (Physics2D.Raycast(enemyCheckPoint.position, transform.right, enemyCheckDistance, whatIsEnemy))
+        {
+            return true;
+        }
+
+        return false;
+    }
     private bool CheckGround()
     {
         bool wasGrounded = isDetectingGround;
@@ -200,141 +261,46 @@ public class CharterController : MonoBehaviour, IDamageable
         }
         return false;
     }
-    private void Flip()
+
+
+    private int FacingRightToInt()
     {
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
-
-
-    #region StateMachine
-
-    private void UpdateStateMachine()
-    {
-        switch (currentState)
+        if (facingRight)
         {
-
-            case State.idle:
-                UpdateIdleState();
-                break;
-            case State.move:
-                UpdateMoveState();
-                break;
-            case State.jump:
-                UpdateJumpState();
-                break;
-            case State.prepareBattle:
-                UpdateBattlePrepareState();
-                break;
-            case State.battle:
-                UpdateBattleState();
-                break;
-            case State.defense:
-                UpdateDefenseBattleState();
-                break;
-            case State.roll:
-                UpdateRollBattleState();
-                break;
-            case State.lightAttack:
-                UpdateLightAttackBattleState();
-                break;
-            case State.hardAttack:
-                UpdateHardAttackBattleState();
-                break;
-            case State.stopBattle:
-                UpdateStopBattleState();
-                break;
+            return 1;
+        }
+        else
+        {
+            return -1;
         }
     }
-    private void SwitchState(State state)
-    {
-        switch (currentState)
-        {
-            case State.idle:
-                ExitIdleState();
-                break;
-            case State.move:
-                ExitMoveState();
-                break;
-            case State.jump:
-                ExitJumpState();
-                break;
-            case State.prepareBattle:
-                ExitBattlePrepareState();
-                break;
-            case State.battle:
-                ExitBattleState();
-                break;
-            case State.defense:
-                ExitDefenseBattleState();
-                break;
-            case State.roll:
-                ExitRollBattleState();
-                break;
-            case State.lightAttack:
-                ExitLightAttackBattleState();
-                break;
-            case State.hardAttack:
-                ExitHardAttackBattleState();
-                break;
-            case State.stopBattle:
-                ExitStopBattleState();
-                break;
-        }
-        switch (state)
-        {
-            case State.idle:
-                EnterIdleState();
-                break;
-            case State.move:
-                EnterMoveState();
-                break;
-            case State.jump:
-                EnterJumpState();
-                break;
-            case State.prepareBattle:
-                EnterBattlePrepareState();
-                break;
-            case State.battle:
-                EnterBattleState();
-                break;
-            case State.defense:
-                EnterDefenseBattleState();
-                break;
-            case State.roll:
-                EnterRollBattleState();
-                break;
-            case State.lightAttack:
-                EnterLightAttackBattleState();
-                break;
-            case State.hardAttack:
-                EnterHardAttackBattleState();
-                break;
-            case State.stopBattle:
-                EnterStopBattleState();
-                break;
-        }
-        currentState = state;
-    }
-
-
-    private enum State
-    {
-        idle,
-        move,
-        jump,
-        prepareBattle,
-        battle,
-        defense,
-        roll,
-        lightAttack,
-        hardAttack,
-        stopBattle,
-    }
-
     #endregion
 
+    /* #region TouchParametrs and Metods
+
+     [Header("TouchParametrs")]
+     [SerializeField] private float touchTimeForDefense = 0.2f;
+     [SerializeField] private float touchTimeForRoll = 0.2f;
+     [SerializeField] private float touchTimeForLightAttack = 0.4f;
+     [SerializeField] private float touchTimeForHardAttack = 0.6f;
+     [SerializeField] private float touchTimeForFailPreparing = 1f;
+     private float touchDuration;
+
+
+     private Vector2 swipeDirection(Vector2 startPos, Vector2 endPos)
+     {
+         var finalDelta = endPos - startPos;
+         if (finalDelta.x < -Mathf.Abs(finalDelta.y)) finalDelta = -Vector2.right;
+         if (finalDelta.x > Mathf.Abs(finalDelta.y)) finalDelta = Vector2.right;
+
+         return finalDelta;
+     }
+
+     #endregion*/
+
     #region IdleState
+
+
 
     private void EnterIdleState()
     {
@@ -361,6 +327,15 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #region MoveState
 
+
+    [Header("Movement Parametrs")]
+    [SerializeField] private float movementSpeed = 400f;
+    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
+    private bool facingRight = true;
+    private bool canMove = true;
+    private bool isMoving;
+    private float movementDirection;
+    private Vector3 zeroVelocity = Vector3.zero;
     private void EnterMoveState()
     {
         anim.SetBool("Move", true);
@@ -385,6 +360,13 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #region JumpState
 
+    [Header("Jump Parametrs")]
+    [SerializeField] private float jumpForce = 750f;
+    [Range(0.1f, 0.9f)] [SerializeField] private float variableJumpHeightMultiplier;
+    public UnityEvent OnLandEvent;
+    private bool canJump = true;
+    private bool isJump = false;
+    private bool checkMultuplierJump;
     private void EnterJumpState()
     {
         checkMultuplierJump = true;
@@ -421,146 +403,17 @@ public class CharterController : MonoBehaviour, IDamageable
     }
     #endregion
 
-    #region PrepareBattleState
-
-    private void EnterBattlePrepareState()
-    {
-        preparingDuration = anim.GetCurrentAnimatorStateInfo(0).length;
-        rb.velocity = Vector2.zero;
-        isInBattle = true;
-        preparingTimeLeft = 0;
-        canJump = false;
-        canMove = false;
-        isReadyForBattle = false;
-        anim.SetBool("PrepareBattle", true);
-
-    }
-    private void UpdateBattlePrepareState()
-    {
-        preparingTimeLeft += Time.deltaTime;
-        if (preparingTimeLeft >= preparingDuration)
-        {
-            SwitchState(State.battle);
-        }
-
-    }
-    private void ExitBattlePrepareState()
-    {
-        isReadyForBattle = false;
-        isInBattle = true;
-        anim.SetBool("PrepareBattle", false);
-    }
-
-
-    #endregion
-
-    #region BattleState
-
-    private void EnterBattleState()
-    {
-        anim.SetBool("BattleIdle", true);
-
-    }
-    private void UpdateBattleState()
-    {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            animWeapon.SetBool("Preparing", true);
-            startswipeDirection = Vector2.zero;
-            startswipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
-
-
-            touchDuration = 0;
-
-        }
-
-
-        if (Input.GetMouseButton(0))
-        {
-            touchDuration += Time.deltaTime;
-
-            if (touchDuration == touchTimeForDefense)
-            {
-                playerSource.PlayOneShot(someSoundTest);
-            }
-            else if (touchDuration == touchTimeForLightAttack)
-            {
-                playerSource.PlayOneShot(soundReadyLightAttack);
-            }
-            else if (touchDuration == touchTimeForHardAttack)
-            {
-                playerSource.PlayOneShot(soundReadyHardAttack);
-            }
-            else if (touchDuration >= touchTimeForFailPreparing)
-            {
-                touchDuration = 0;
-                SwitchState(State.prepareBattle);
-
-            }
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            Debug.Log(touchDuration);
-
-            animWeapon.SetBool("Preparing", false);
-            endSwipeDirection = Camera.main.ViewportToWorldPoint(Input.mousePosition).normalized;
-
-
-            totalDirection = Vector2.zero;
-            totalDirection = swipeDirection(startswipeDirection, endSwipeDirection);
-            Debug.Log("TotalVector" + totalDirection);
-
-
-
-            if (touchDuration <= touchTimeForDefense && totalDirection == Vector2.zero)
-            {
-                Debug.Log("Defense");
-                SwitchState(State.defense);
-
-            }
-            else if (touchDuration <= touchTimeForRoll && totalDirection != Vector2.zero)
-            {
-                SwitchState(State.roll);
-            }
-            else if (touchDuration >= touchTimeForRoll && touchDuration <= touchTimeForLightAttack && totalDirection != Vector2.zero)
-            {
-                SwitchState(State.lightAttack);
-            }
-            else if (touchDuration >= touchTimeForLightAttack && touchDuration <= touchTimeForHardAttack && totalDirection != Vector2.zero)
-            {
-                SwitchState(State.hardAttack);
-            }
-
-            touchDuration = 0;
-        }
-
-    }
-    private void ExitBattleState()
-    {
-        animWeapon.SetBool("Preparing", false);
-        anim.SetBool("BattleIdle", false);
-    }
-
-
-
-    private Vector2 swipeDirection(Vector2 startPos, Vector2 endPos)
-    {
-        var finalDelta = endPos - startPos;
-        if (finalDelta.x < -Mathf.Abs(finalDelta.y)) finalDelta = -Vector2.right;
-        if (finalDelta.x > Mathf.Abs(finalDelta.y)) finalDelta = Vector2.right;
-
-        return finalDelta;
-    }
-
-    #endregion
-
     #region DefenseBattleState
 
+    [Header("Defense Parametrs")]
+    [SerializeField] private float defenseDuration = 1f;
+    private bool isDefense = false;
+    private float defenseTimeLeft;
     private void EnterDefenseBattleState()
     {
-
+        canMove = false;
+        canJump = false;
+        rb.velocity = Vector2.zero;
         anim.SetBool("DefenseBattle", true);
         isDefense = true;
         defenseTimeLeft = 0;
@@ -571,88 +424,53 @@ public class CharterController : MonoBehaviour, IDamageable
         defenseTimeLeft += Time.deltaTime;
         if (defenseTimeLeft >= defenseDuration)
         {
-            SwitchState(State.battle);
+            SwitchState(State.idle);
         }
     }
     private void ExitDefenseBattleState()
     {
+        canMove = true;
+        canJump = true;
         isDefense = false;
         anim.SetBool("DefenseBattle", false);
     }
 
     #endregion
 
-    #region RollBattleState
+    #region FlyAttackBattleState
 
-    private void EnterRollBattleState()
+    [Header("Attack Parametrs")]
+    [SerializeField] private float groundAttackDuration = 0.5f;
+    [SerializeField] private float attackSpeed = 5;
+    [SerializeField] private float flyAttackDuration = 0.3f;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRaduis = 0.3f;
+    private bool isAttack = false;
+    private float attackTimeLeft = 0;
+
+    private void EnterFlyAttackBattleState()
     {
-        isRoll = true;
-        rollTimeLeft = 0;
-        anim.SetBool("RollBattle", true);
-        Debug.Log("IsRolling");
-    }
-    private void UpdateRollBattleState()
-    {
-        if (rollTimeLeft <= rollDuration)
-        {
-            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
-            rollTimeLeft += Time.deltaTime;
-        }
 
-        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
-        {
-            rb.velocity = Vector2.zero;
-            SwitchState(State.battle);
-        }
-
-    }
-    private void ExitRollBattleState()
-    {
-        anim.SetBool("RollBattle", false);
-        isRoll = false;
-    }
-
-    private int FacingRightToInt()
-    {
-        if (facingRight)
-        {
-            return 1;
-        }
-        else
-        {
-            return -1;
-        }
-    }
-
-
-    #endregion
-
-    #region LightAttackBattleState
-
-    private void EnterLightAttackBattleState()
-    {
         isAttack = true;
         attackTimeLeft = 0;
         anim.SetBool("LightAttack", true);
-        Debug.Log("isAttack");
+
 
     }
-    private void UpdateLightAttackBattleState()
+    private void UpdateFlyAttackBattleState()
     {
-        if (attackTimeLeft <= attackDuration)
+        if (attackTimeLeft <= flyAttackDuration)
         {
-            rb.velocity = new Vector2(attackSpeed, 0) * totalDirection;
             attackTimeLeft += Time.deltaTime;
         }
 
-        if (attackTimeLeft >= attackDuration || isDetectingWall || isDetectingLedge)
+        if (attackTimeLeft >= flyAttackDuration || isDetectingWall || isDetectingLedge)
         {
-            rb.velocity = Vector2.zero;
-            SwitchState(State.battle);
-        }
 
+            SwitchState(State.jump);
+        }
     }
-    private void ExitLightAttackBattleState()
+    private void ExitFlyAttackBattleState()
     {
         anim.SetBool("LightAttack", false);
         isAttack = false;
@@ -662,75 +480,95 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #endregion
 
-    #region HardAttackBattleState
+    #region GroundAttackBattleState
 
-    private void EnterHardAttackBattleState()
+    private void EnterGroundAttackState()
     {
-        isRoll = true;
-        rollTimeLeft = 0;
-        anim.SetBool("RollBattle", true);
-        Debug.Log("IsRolling");
+        canMove = false;
+        canJump = false;
+        isAttack = true;
+        attackTimeLeft = 0;
+        anim.SetBool("HardAttack", true);
+
     }
-    private void UpdateHardAttackBattleState()
+    private void UpdateGroundAttackState()
     {
-        if (rollTimeLeft <= rollDuration)
+        if (attackTimeLeft <= groundAttackDuration)
         {
-            rb.velocity = new Vector2(rollSpeed, 0) * totalDirection;
-            rollTimeLeft += Time.deltaTime;
+            if (isDetectingEnemy || isDetectingWall || isDetectingLedge)
+            {
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.velocity = new Vector2(attackSpeed * FacingRightToInt(), 0);
+            }
+            attackTimeLeft += Time.deltaTime;
+
+
         }
 
-        if (rollTimeLeft >= rollDuration || isDetectingWall || isDetectingLedge)
+        if (attackTimeLeft >= groundAttackDuration)
         {
             rb.velocity = Vector2.zero;
-            SwitchState(State.battle);
-        }
-
-    }
-    private void ExitHardAttackBattleState()
-    {
-        anim.SetBool("RollBattle", false);
-        isRoll = false;
-    }
-
-
-
-    #endregion
-
-    #region StopBattleState
-
-    private void EnterStopBattleState()
-    {
-        anim.SetBool("StopBattle", true);
-        canJump = true;
-        canMove = true;
-
-    }
-    private void UpdateStopBattleState()
-    {
-        if (!isInBattle)
-        {
             SwitchState(State.idle);
         }
+
     }
-    private void ExitStopBattleState()
+    private void ExitGroundAttackState()
     {
-        anim.SetBool("StopBattle", false);
-        isInBattle = false;
+        anim.SetBool("HardAttack", false);
+        canMove = true;
+        canJump = true;
+        isAttack = false;
+    }
+
+    public void Attack()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, attackRaduis, whatIsEnemy);
+
+        foreach (Collider2D enemy in hitEnemy)
+        {
+            enemy.GetComponent<IDamageable>().TakeDamage(5);
+        }
     }
 
     #endregion
+
+
+    #region AudioParametrs and Metods
+    [Header("Audio")]
+    [SerializeField] private AudioSource playerSource;
+    [SerializeField] private AudioClip someSoundTest;
+    [SerializeField] private AudioClip soundDefense;
+    [SerializeField] private AudioClip soundReadyLightAttack;
+    [SerializeField] private AudioClip soundReadyHardAttack;
+    [SerializeField] private AudioClip soundFailPreparing;
+
+
+
+    #endregion
+    public int maxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int currentHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRaduis);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(wallCheckPoint.position, wallCheckPoint.position + Vector3.right * wallCheckDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(ledgeCheckPoint.position, ledgeCheckPoint.position + Vector3.down * ledgeCheckDistance);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(enemyCheckPoint.position, enemyCheckPoint.position + Vector3.right * enemyCheckDistance);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRaduis);
     }
 
     public void TakeDamage(int damage)
     {
 
+
     }
+
+
+
 }
