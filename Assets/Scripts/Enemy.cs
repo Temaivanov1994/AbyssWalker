@@ -3,67 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour, IDamageable
 {
 
-    private enum State
-    {
-        Idle,
-        Walk,
-        Stun,
-        Charge,
-        PlayerDetected,
-        SerchPlayer,
-        MelleAttack,
-        Dead,
-        Damaged,
-    }
 
-    private State currentState;
-
-
-    [Header("IdleState")]
-    [SerializeField] private float IdleMinTimeDuration = 1f;
-    [SerializeField] private float IdleMaxTimeDuration = 3f;
-    private float IdleStartTime;
-    private float IdleDuration;
-
-    [Header("WalkState")]
-    [SerializeField] private float moveSpeed = 3f;
-    private int facingDirection;
-    private Vector2 movement;
-
-    [Header("StunState")]
-    [SerializeField] private float StunDuration = 5f;
-    private float StunStartTime;
-
-    [Header("ChargeState")]
-    [SerializeField] private float chargeMoveSpeed = 7f;
-    [SerializeField] private float ChargeDuration = 2f;
-    private float ChargeStartTime;
-
-    [Header("PlayerDetectedState")]
-    [SerializeField] private float PlayerDetectedDuration = 0.2f;
-    private float PlayerDetectedStartTime;
-    private bool playerDetectedInMinAgroDistance;
-    private bool playerDetectedInMaxAgroDistance;
-
-    [Header("SerchPlayerState")]
-    [SerializeField] private float timeBetweenTurns = 1f;
-    private float lastTurnTime;
-    [SerializeField] private int amountTurns = 3;
-    private int amountTurnsDone;
-    private bool isAllTurnsDone, isAllTunrsTimeDone, turnImmediately;
-    [Header("MelleAttack")]
-    [SerializeField] private Transform melleAttackPoint;
-    [SerializeField] private float melleAttackRadius = 0.84f;
-    [SerializeField] private int melleAttackDamage = 1;
-    private bool playerDetectedInCloseRangeAction;
-    [SerializeField] private bool isAttack = false;
-    [SerializeField] private float attackDuration;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float attackTimeLeft = 0;
-
-    [Header("Damaged")]
-    [SerializeField] private float damagedDuration = 0.2f;
-    private float lastDamageTime;
 
     /*[Header("Loot")]
     [SerializeField] private GameObject Loot;
@@ -91,15 +31,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsPlayer;
-    private bool groundDetected;
-    private bool wallDetected;
+    private bool isGroundDetected;
+    private bool isWallDetected;
 
-    [SerializeField]
-    private int maxHealth = 5;
-    private int currentHealth;
-    [SerializeField]
-    private int stunMaxHealth = 3;
-    private int stunCurrentHealth;
+
 
 
 
@@ -108,28 +43,41 @@ public class Enemy : MonoBehaviour, IDamageable
     private GameObject hitPartical;
     private Rigidbody2D rb;
     private Animator anim;
+    [SerializeField] private HealthBar healthBar;
 
-    int IDamageable.maxHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-    int IDamageable.currentHealth { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        healthBar = GetComponentInChildren<HealthBar>();
+    }
     private void Start()
     {
-
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
         currentHealth = maxHealth;
         stunCurrentHealth = stunMaxHealth;
-        facingDirection = 1;
+        healthBar.SetMaxHealth(maxHealth, currentHealth);
+        healthBar.SetHealth(currentHealth);
         SwitchState(State.SerchPlayer);
+
 
     }
     private void Update()
     {
+
+
         StateMachine();
+        Detecting();
     }
 
 
     #region StateMachine
+
+    private State currentState;
+
+
+
+
     private void StateMachine()
     {
         switch (currentState)
@@ -158,7 +106,7 @@ public class Enemy : MonoBehaviour, IDamageable
             case State.Dead:
                 UpdateDeadState();
                 break;
-            case State.Damaged:
+            case State.TakeDamage:
                 UpdateDamagedState();
                 break;
 
@@ -193,7 +141,7 @@ public class Enemy : MonoBehaviour, IDamageable
             case State.Dead:
                 ExitDeadState();
                 break;
-            case State.Damaged:
+            case State.TakeDamage:
                 ExitDamagedState();
                 break;
         }
@@ -223,59 +171,111 @@ public class Enemy : MonoBehaviour, IDamageable
             case State.Dead:
                 EnterDeadState();
                 break;
-            case State.Damaged:
+            case State.TakeDamage:
                 EnterDamagedState();
                 break;
         }
         currentState = state;
+
+
     }
+
+    private enum State
+    {
+        Idle,
+        Walk,
+        Stun,
+        Charge,
+        PlayerDetected,
+        SerchPlayer,
+        MelleAttack,
+        Dead,
+        TakeDamage,
+    }
+    #endregion
+
+
+
+
+    #region Stats
+
+    [Header("Enemy Stats")]
+    [SerializeField]
+    private int maxHealth = 5;
+    private int currentHealth;
+    [SerializeField]
+    private int stunMaxHealth = 3;
+    private int stunCurrentHealth;
+
+    [Header("Battle Stats")]
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float knockbackForce = 200;
+
+
 
     #endregion
 
     #region IdleState
 
+    [Header("IdleState")]
+    [SerializeField] private float IdleMinTimeDuration = 1f;
+    [SerializeField] private float IdleMaxTimeDuration = 3f;
+    private float IdleTimeLeft;
+    private float IdleDuration;
     private void EnterIdleState()
     {
         anim.SetBool("Idle", true);
-        IdleStartTime = Time.time;
+        IdleTimeLeft = 0;
         movement.Set(0, rb.velocity.y);
         rb.velocity = movement;
         IdleDuration = Random.Range(IdleMinTimeDuration, IdleMaxTimeDuration);
     }
     private void UpdateIdleState()
     {
-        DoChecks();
-        if (Time.time >= IdleStartTime + IdleDuration)
+
+        if (IdleTimeLeft >= IdleDuration)
         {
             SwitchState(State.Walk);
         }
 
+        if (isDetectedPlayerDistance && isGroundDetected)
+        {
+            SwitchState(State.PlayerDetected);
+        }
+        IdleTimeLeft += Time.deltaTime;
 
 
     }
     private void ExitIdleState()
     {
         anim.SetBool("Idle", false);
-        Flip();
+        if (!isGroundDetected || isWallDetected)
+        {
+            Flip();
+        }
     }
 
 
     #endregion
 
     #region WalkState
+
+
+    [Header("WalkState")]
+    [SerializeField] private float moveSpeed = 3f;
+    private int facingDirection = 1;
+    private Vector2 movement;
     private void EnterWalkState()
     {
         anim.SetBool("Walk", true);
     }
     private void UpdateWalkState()
     {
-        DoChecks();
-
-        if (!groundDetected || wallDetected)
+        if (!isGroundDetected || isWallDetected)
         {
             SwitchState(State.Idle);
         }
-        else if (playerDetectedInMaxAgroDistance)
+        else if (isDetectedPlayerDistance)
         {
             SwitchState(State.PlayerDetected);
         }
@@ -293,9 +293,13 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion
 
     #region StunState
+
+    [Header("StunState")]
+    [SerializeField] private float stunDuration = 5f;
+    private float stunTimeLeft;
     private void EnterStunState()
     {
-        StunStartTime = Time.time;
+        stunTimeLeft = 0;
         movement.Set(0, rb.velocity.y);
         rb.velocity = movement;
         anim.SetBool("Stun", true);
@@ -303,11 +307,11 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     private void UpdateStunState()
     {
-        if (Time.time >= StunStartTime + StunDuration)
+        if (stunTimeLeft >= stunDuration)
         {
-            if (playerDetectedInCloseRangeAction)
+            if (isAttackPlayerDistance)
             {
-                SwitchState(State.PlayerDetected);
+                SwitchState(State.MelleAttack);
             }
             else
             {
@@ -315,7 +319,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
             }
         }
-
+        stunTimeLeft += Time.deltaTime;
 
     }
     private void ExitStunState()
@@ -326,29 +330,34 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion
 
     #region ChargeState
+
+    [Header("ChargeState")]
+    [SerializeField] private float chargeMoveSpeed = 7f;
+    [SerializeField] private float chargeDuration = 2f;
+    private float chargeTimeLeft;
+
     private void EnterChargeState()
     {
         anim.SetBool("Charge", true);
-        ChargeStartTime = Time.time;
+        chargeTimeLeft = 0;
     }
     private void UpdateChargeState()
     {
-        DoChecks();
 
-        if (Time.time >= ChargeStartTime + ChargeDuration || !groundDetected || wallDetected)
+        if (chargeTimeLeft >= chargeDuration || !isGroundDetected || isWallDetected)
         {
-
             SwitchState(State.SerchPlayer);
         }
         else
         {
             movement.Set(chargeMoveSpeed * facingDirection, rb.velocity.y);
             rb.velocity = movement;
-            if (playerDetectedInCloseRangeAction)
+            if (isAttackPlayerDistance)
             {
                 SwitchState(State.MelleAttack);
             }
         }
+        chargeTimeLeft += Time.deltaTime;
     }
     private void ExitChargeState()
     {
@@ -358,24 +367,30 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion
 
     #region DetectedPlayer
+
+    [Header("PlayerDetectedState")]
+    [SerializeField] private float detectedPlayerDuration = 0.2f;
+    private float detectedPlayerTimeLeft = 0;
+    private bool isDetectedPlayerDistance;
     private void EnterPlayerDetectedState()
     {
         anim.SetBool("PlayerDetected", true);
-        /*detectSound.Play();*/
         movement.Set(0, rb.velocity.y);
         rb.velocity = movement;
-        PlayerDetectedStartTime = Time.time;
+        detectedPlayerTimeLeft = 0;
     }
     private void UpdatePlayerDetectedState()
     {
-        if (Time.time >= PlayerDetectedStartTime + PlayerDetectedDuration)
+        if (detectedPlayerTimeLeft >= detectedPlayerDuration)
         {
             SwitchState(State.Charge);
         }
-        else if (playerDetectedInCloseRangeAction)
+        else if (isAttackPlayerDistance)
         {
             SwitchState(State.MelleAttack);
         }
+
+        detectedPlayerTimeLeft += Time.deltaTime;
     }
     private void ExitPlayerDetectedState()
     {
@@ -386,6 +401,13 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion
 
     #region SerchPlayer
+
+    [Header("SerchPlayerState")]
+    [SerializeField] private float timeBetweenTurns = 1f;
+    [SerializeField] private int amountTurns = 3;
+    private float flipTimeLeft;
+    private int amountTurnsDone;
+    private bool isAllTurnsDone, isAllTunrsTimeDone, turnImmediately;
     private void EnterSerchPlayerState()
     {
         anim.SetBool("Idle", true);
@@ -393,26 +415,18 @@ public class Enemy : MonoBehaviour, IDamageable
         rb.velocity = movement;
         amountTurns = Random.Range(2, 5);
         amountTurnsDone = 0;
+        flipTimeLeft = 0;
         isAllTurnsDone = false;
         isAllTunrsTimeDone = false;
     }
     private void UpdateSerchPlayerState()
     {
 
-        if (turnImmediately)
+
+        if (flipTimeLeft >= timeBetweenTurns && !isAllTurnsDone)
         {
             Flip();
-            lastTurnTime = Time.time;
-            amountTurnsDone++;
-            turnImmediately = false;
-
-        }
-        else if (Time.time >= lastTurnTime + timeBetweenTurns && !isAllTurnsDone)
-        {
-
-            Flip();
-            DoChecks();
-            lastTurnTime = Time.time;
+            flipTimeLeft = 0;
             amountTurnsDone++;
         }
 
@@ -421,20 +435,21 @@ public class Enemy : MonoBehaviour, IDamageable
             isAllTurnsDone = true;
         }
 
-        if (Time.time >= lastTurnTime + timeBetweenTurns && isAllTurnsDone)
+        if (Time.time >= flipTimeLeft + timeBetweenTurns && isAllTurnsDone)
         {
             isAllTunrsTimeDone = true;
         }
 
-        if (playerDetectedInMaxAgroDistance && groundDetected)
+        if (isDetectedPlayerDistance && isGroundDetected)
         {
             SwitchState(State.PlayerDetected);
         }
         else if (isAllTunrsTimeDone)
         {
-            SwitchState(State.Walk);
+            SwitchState(State.Idle);
         }
 
+        flipTimeLeft += Time.deltaTime;
     }
     private void ExitSerchPlayerState()
     {
@@ -444,6 +459,17 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion  
 
     #region MelleAttack
+
+    [Header("MelleAttack")]
+    [SerializeField] private Transform melleAttackPoint;
+    [SerializeField] private float melleAttackRadius = 0.84f;
+
+    private bool isAttackPlayerDistance;
+    [SerializeField] private bool isAttack = false;
+    [SerializeField] private float attackDuration;
+    [SerializeField] private float attackCooldown;
+    private float attackCooldownTimeLeft = 0;
+    private float attackTimeLeft = 0;
     private void EnterMelleAttackState()
     {
         anim.SetBool("MelleAttack", true);
@@ -451,85 +477,131 @@ public class Enemy : MonoBehaviour, IDamageable
         rb.velocity = movement;
         isAttack = true;
         attackTimeLeft = 0;
+        attackCooldownTimeLeft = 0;
 
     }
     private void UpdateMelleAttackState()
     {
-        attackTimeLeft += Time.deltaTime;
-        DoChecks();
+
         if (attackTimeLeft >= attackDuration)
         {
+            if (attackCooldownTimeLeft >= attackCooldown)
+            {
+                SwitchState(State.SerchPlayer);
 
-            SwitchState(State.SerchPlayer);
+            }
+            else
+            {
+                SwitchState(State.Idle);
+            }
 
         }
+
+        attackCooldownTimeLeft += Time.deltaTime;
+        attackTimeLeft += Time.deltaTime;
     }
     private void ExitMelleAttackState()
     {
         isAttack = false;
         anim.SetBool("MelleAttack", false);
     }
+
+    public void Attack()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(melleAttackPoint.position, melleAttackRadius, whatIsPlayer);
+
+        foreach (Collider2D target in hitEnemy)
+        {
+            Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
+
+            target.GetComponent<IDamageable>().TakeDamage(attackDamage);
+            Vector2 knockbackDirection = target.transform.position - transform.position;
+            rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
+        }
+    }
+
     #endregion
 
-    #region Damaged
+    #region TakeDamage
+
+    [Header("Damaged")]
+    [SerializeField] private float takeDamageDuration = 0.2f;
+    private float takeDamageTimeLeft;
+    [SerializeField] private float knockbackDuration = 0.5f;
+
+
+    private float knockbackTimeLeft = 0;
     private void EnterDamagedState()
     {
-
         anim.SetBool("Damaged", true);
-        lastDamageTime = Time.time;
+        takeDamageTimeLeft = 0;
+        knockbackTimeLeft = 0;
         movement.Set(0, rb.velocity.y);
         rb.velocity = movement;
     }
     private void UpdateDamagedState()
     {
-        if (Time.time >= lastDamageTime + damagedDuration && currentHealth > 0)
+        if (takeDamageTimeLeft >= takeDamageDuration)
         {
-            if (stunCurrentHealth <= 0)
+            if (knockbackTimeLeft >= knockbackDuration && currentHealth > 0)
             {
 
-                SwitchState(State.Stun);
-            }
-            else
-            {
-                SwitchState(State.SerchPlayer);
-            }
-        }
-        else if (currentHealth <= 0)
-        {
-            SwitchState(State.Dead);
-        }
+                if (stunCurrentHealth <= 0)
+                {
 
+                    SwitchState(State.Stun);
+                }
+                else
+                {
+                    SwitchState(State.SerchPlayer);
+                }
+            }
+            else if (currentHealth <= 0)
+            {
+                SwitchState(State.Dead);
+            }
+        }
+        knockbackTimeLeft += Time.deltaTime;
+        takeDamageTimeLeft += Time.deltaTime;
     }
     private void ExitDamagedState()
     {
         anim.SetBool("Damaged", false);
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
     }
     #endregion
 
     #region Dead
+
+    [Header("DeadParametrs")]
+    [SerializeField] private bool isDead;
     private void EnterDeadState()
     {
+
+        isDead = true;
         anim.SetBool("Dead", true);
-        movement.Set(0, rb.velocity.y);
-        rb.velocity = movement;
-        
+
+
+
     }
     private void UpdateDeadState()
     {
-
+        movement.Set(0, rb.velocity.y);
+        rb.velocity = movement;
     }
     private void ExitDeadState()
     {
-
+        isDead = false;
     }
     #endregion
-    private void DoChecks()
+    private void Detecting()
     {
-        groundDetected = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckDistance, whatIsGround);
-        wallDetected = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
-        playerDetectedInMinAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);
-        playerDetectedInMaxAgroDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
-        playerDetectedInCloseRangeAction = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
+        isGroundDetected = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckDistance, whatIsGround);
+        isWallDetected = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
+        /* attackPlayeDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);*/
+        isDetectedPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
+        isAttackPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
 
     }
 
@@ -563,11 +635,16 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
+
+
+        if (!isDead)
         {
-                        SwitchState(State.Dead);
-           
+            SwitchState(State.TakeDamage);
+            healthBar.ShowFloatingText(damage,transform);
+            healthBar.SetHealth(currentHealth);
         }
+
+
     }
 }
 
