@@ -514,7 +514,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
 
-            target.GetComponent<IDamageable>().TakeDamage(attackDamage);
+            target.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
             Vector2 knockbackDirection = target.transform.position - transform.position;
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
         }
@@ -632,20 +632,29 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isDamage)
     {
-        currentHealth -= damage;
 
-
-        if (!isDead)
+        if (isDamage)
         {
-            SwitchState(State.TakeDamage);
-            healthBar.ShowFloatingText(damage,transform);
-            healthBar.SetHealth(currentHealth);
+            currentHealth -= damage;
+            if (!isDead)
+            {
+                SwitchState(State.TakeDamage);
+            }
+        }
+        else
+        {
+            currentHealth += damage;
+
         }
 
 
+        healthBar.ShowFloatingText(damage, transform);
+        healthBar.SetHealth(currentHealth);
     }
+
+
 }
 
 

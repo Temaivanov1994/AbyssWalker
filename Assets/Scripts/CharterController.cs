@@ -23,7 +23,6 @@ public class CharterController : MonoBehaviour, IDamageable
 
         UpdateStateMachine();
 
-        movementDirection = Input.GetAxisRaw("Horizontal");
 
         if (movementDirection > 0 && !facingRight)
         {
@@ -38,6 +37,11 @@ public class CharterController : MonoBehaviour, IDamageable
         {
             SwitchState(State.jump);
         }
+
+        #region KeyboardControl
+
+
+        movementDirection = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && isDetectingGround)
         {
@@ -76,7 +80,7 @@ public class CharterController : MonoBehaviour, IDamageable
 
             }
         }
-
+        #endregion
 
         if (regenerationStaminaTimeLeft >= regenerationStaminaDuration)
         {
@@ -101,11 +105,6 @@ public class CharterController : MonoBehaviour, IDamageable
         {
             regenerationStaminaTimeLeft += Time.deltaTime;
         }
-
-
-
-
-
 
         Detecting();
     }
@@ -187,6 +186,9 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.defense:
                 UpdateDefenseBattleState();
                 break;
+            case State.drinkEstus:
+                UpdateEstusState();
+                break;
             case State.flyAttack:
                 UpdateFlyAttackBattleState();
                 break;
@@ -214,6 +216,9 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.defense:
                 ExitDefenseBattleState();
                 break;
+            case State.drinkEstus:
+                ExitEstusState();
+                break;
             case State.flyAttack:
                 ExitFlyAttackBattleState();
                 break;
@@ -238,6 +243,9 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.defense:
                 EnterDefenseBattleState();
                 break;
+            case State.drinkEstus:
+                EnterEstusState();
+                break;
             case State.flyAttack:
                 EnterFlyAttackBattleState();
                 break;
@@ -247,7 +255,6 @@ public class CharterController : MonoBehaviour, IDamageable
             case State.knockBack:
                 EnterKnockBackState();
                 break;
-
         }
         currentState = state;
     }
@@ -259,6 +266,7 @@ public class CharterController : MonoBehaviour, IDamageable
         move,
         jump,
         defense,
+        drinkEstus,
         flyAttack,
         groundAttack,
         knockBack,
@@ -402,6 +410,10 @@ public class CharterController : MonoBehaviour, IDamageable
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.H) && currentHealth != maxHealth)
+        {
+            SwitchState(State.drinkEstus);
+        }
     }
     private void ExitIdleState()
     {
@@ -451,6 +463,7 @@ public class CharterController : MonoBehaviour, IDamageable
     public UnityEvent OnLandEvent;
     private bool canJump = true;
     private bool isJump = false;
+    [SerializeField] private bool jumpButton = false;
     private bool checkMultuplierJump;
     private void EnterJumpState()
     {
@@ -469,7 +482,7 @@ public class CharterController : MonoBehaviour, IDamageable
         {
             SwitchState(State.idle);
         }
-        if (checkMultuplierJump && !Input.GetButton("Jump"))
+        if (checkMultuplierJump && (!jumpButton || !Input.GetButton("Jump")))
         {
             checkMultuplierJump = false;
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * variableJumpHeightMultiplier);
@@ -621,13 +634,13 @@ public class CharterController : MonoBehaviour, IDamageable
             Rigidbody2D rbTarget = enemy.GetComponent<Rigidbody2D>();
             if (isDetectingGround)
             {
-                enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage);
+                enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage, true);
                 Vector2 knockbackDirection = enemy.transform.position - transform.position;
                 rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
             }
             else
             {
-                enemy.GetComponent<IDamageable>().TakeDamage(flyAttackDamage);
+                enemy.GetComponent<IDamageable>().TakeDamage(flyAttackDamage, true);
             }
 
         }
@@ -706,6 +719,47 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #endregion
 
+    #region DrinkEstus
+
+    [Header("Estus Parametrs")]
+    [SerializeField] private float drinkEstusDuration = 3f;
+    [SerializeField] private int healingPower = 3;
+    private float drinkEstusTimeLeft;
+    private bool isDrinking = false;
+
+    private void EnterEstusState()
+    {
+        drinkEstusTimeLeft = 0;
+        canMove = false;
+        canJump = false;
+        isDrinking = true;
+
+        anim.SetBool("Estus", true);
+
+
+    }
+    private void UpdateEstusState()
+    {
+
+        drinkEstusTimeLeft += Time.deltaTime;
+        if (drinkEstusTimeLeft >= defenseDuration)
+        {
+            SwitchState(State.idle);
+        }
+
+    }
+    private void ExitEstusState()
+    {
+        TakeDamage(healingPower, false);
+        anim.SetBool("Estus", false);
+        canMove = true;
+        canJump = true;
+        isDrinking = false;
+    }
+
+    #endregion
+
+
     #region AudioParametrs and Metods
     [Header("Audio")]
     [SerializeField] private AudioSource playerSource;
@@ -719,6 +773,68 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #endregion
 
+
+    #region Screen Buttons
+
+    public void MovementButtons(int direction)
+    {
+        movementDirection = direction;
+
+    }
+
+    public void JumpButton(bool _jumpButton)
+    {
+        jumpButton = _jumpButton;
+
+        if (isDetectingGround && _jumpButton == true)
+        {
+            if (canJump)
+            {
+                rb.AddForce(new Vector2(0f, jumpForce));
+                SwitchState(State.jump);
+            }
+        }
+    }
+
+    public void AttackButton()
+    {
+
+        if (!isAttack)
+        {
+            if (isDetectingGround && currentStamina >= groundAttackStaminaCost)
+            {
+                currentStamina -= groundAttackStaminaCost;
+                staminaBar.SetStamina(currentStamina);
+                SwitchState(State.groundAttack);
+            }
+            else if (!isDetectingGround && currentStamina >= flyAttackStaminaCost)
+            {
+                currentStamina -= flyAttackStaminaCost;
+                staminaBar.SetStamina(currentStamina);
+                SwitchState(State.flyAttack);
+            }
+
+        }
+    }
+    public void DefenceButton()
+    {
+
+        if (!isDefense)
+        {
+            if (isDetectingGround && currentStamina >= defenseStaminaCost)
+            {
+                currentStamina -= defenseStaminaCost;
+                staminaBar.SetStamina(currentStamina);
+                SwitchState(State.defense);
+
+            }
+        }
+
+
+
+    }
+
+    #endregion
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.black;
@@ -732,20 +848,28 @@ public class CharterController : MonoBehaviour, IDamageable
         Gizmos.DrawWireSphere(attackPoint.position, attackRaduis);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isDamage)
     {
+        if (isDamage)
+        {
 
-        if (!isKnockback && !isDefense)
-        {
-            SwitchState(State.knockBack);
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);
-           
+            if (!isKnockback && !isDefense)
+            {
+                SwitchState(State.knockBack);
+                currentHealth -= damage;
+
+            }
+            if (isDefense)
+            {
+                SwitchState(State.groundAttack);
+            }
         }
-        if (isDefense)
+        else
         {
-            SwitchState(State.groundAttack);
+            currentHealth += damage;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
+        healthBar.SetHealth(currentHealth);
 
     }
 
