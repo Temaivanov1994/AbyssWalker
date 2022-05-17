@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.21f1 (a38c86f6690f) revision 10718342'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19044.1645; Version 2009; 64bit' Language: 'ru' Physical Memory: 16349 MB
+OS: 'Windows 10 Pro; OS build 19044.1706; Version 2009; 64bit' Language: 'ru' Physical Memory: 16349 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ Z:/Unity Projects/AbyssWalker
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-62588
+53833
 Successfully changed project path to: Z:/Unity Projects/AbyssWalker
 Z:/Unity Projects/AbyssWalker
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 105.73 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 106.05 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,42 +35,561 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56748
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56320
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.345842 seconds.
+Registered in 0.004820 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 105.45 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 105.08 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in 13.534 seconds
+- Completed reload, in  6.101 seconds
 Domain Reload Profiling:
-	ReloadAssembly (13535ms)
-		BeginReloadAssembly (5394ms)
+	ReloadAssembly (6102ms)
+		BeginReloadAssembly (123ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1980ms)
-			LoadAssemblies (5395ms)
+		EndReloadAssembly (1012ms)
+			LoadAssemblies (118ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (974ms)
+			SetupTypeCache (337ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (70ms)
-			SetupLoadedEditorAssemblies (685ms)
+			RebuildScriptCaches (67ms)
+			SetupLoadedEditorAssemblies (383ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (106ms)
-				BeforeProcessingInitializeOnLoad (321ms)
+				RefreshPlugins (105ms)
+				BeforeProcessingInitializeOnLoad (35ms)
 				ProcessInitializeOnLoadAttributes (174ms)
-				ProcessInitializeOnLoadMethodAttributes (76ms)
+				ProcessInitializeOnLoadMethodAttributes (60ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 1.362644 seconds.
+Registered in 0.007011 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 106.86 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.480 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2482ms)
+		BeginReloadAssembly (323ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (11ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (34ms)
+		EndReloadAssembly (2021ms)
+			LoadAssemblies (200ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (677ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (108ms)
+			SetupLoadedEditorAssemblies (766ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (107ms)
+				BeforeProcessingInitializeOnLoad (173ms)
+				ProcessInitializeOnLoadAttributes (427ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (15ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2201 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 97.9 MB.
+System memory in use after: 97.9 MB.
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2636.
+Total: 6.481400 ms (FindLiveObjects: 0.423500 ms CreateObjectMapping: 0.161500 ms MarkObjects: 5.763500 ms  DeleteObjects: 0.130300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Player.controller
+  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Player.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd30504f6b08c189c474e244ee314b74') in 0.075793 seconds 
+  Import took 0.082122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.712412 seconds.
+  path: Assets/Resources/Charters/ProjectTiles
+  artifactKey: Guid(78b2f008b0724bb4bb78688215ba992c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/ProjectTiles using Guid(78b2f008b0724bb4bb78688215ba992c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22352f2f79793a09ee546ff4dfd1e178') in 0.009813 seconds 
+  Import took 0.018172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.364299 seconds.
+  path: Assets/Resources/Charters/Heroes
+  artifactKey: Guid(71379df6b11a5c940a6ed06de3335097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes using Guid(71379df6b11a5c940a6ed06de3335097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3932ce82bf255e5ade0f3d6808dc5e3') in 0.009767 seconds 
+  Import took 0.015795 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.931973 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf
+  artifactKey: Guid(561a76c4fe7da144db7403f32b0dd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf using Guid(561a76c4fe7da144db7403f32b0dd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17037c073c84cec96be15302b63451c1') in 0.009755 seconds 
+  Import took 0.015677 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.740043 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Hero_Dwarf.controller
+  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Hero_Dwarf.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd90e09296d91422da3e35fd012566804') in 0.015376 seconds 
+  Import took 0.021707 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.957866 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/PrepareBattle_Hero.anim
+  artifactKey: Guid(a8c7a41abe5f07a4cb3b2d4c436d7ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/PrepareBattle_Hero.anim using Guid(a8c7a41abe5f07a4cb3b2d4c436d7ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81a5fb79157331aadf3b430902b45e61') in 0.013043 seconds 
+  Import took 0.019219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 43.760520 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero.aseprite
+  artifactKey: Guid(9ec7710e3d14eb14e8870645b7947ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero.aseprite using Guid(9ec7710e3d14eb14e8870645b7947ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5273c58e702659dffbf54b516f903d6') in 0.013741 seconds 
+  Import took 0.020149 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.550242 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
+  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bffa860392a885ee1c59b809e5206b23') in 0.009740 seconds 
+  Import took 0.015736 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 251.899706 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
+  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24c206fbd35dd7e91a0e3f5f3f61597a') in 0.003834 seconds 
+  Import took 0.012023 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 127.664548 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
+  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13a1a1c18d7a6496ac3c707b74b0b016') in 0.003926 seconds 
+  Import took 0.011303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.306239 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder
+  artifactKey: Guid(408316391e11c8c4d8487d661f95502b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder using Guid(408316391e11c8c4d8487d661f95502b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4f4dfe516b297224d3fa2f0e588df57') in 0.009346 seconds 
+  Import took 0.016891 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.013686 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_1_Hero.anim
+  artifactKey: Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_1_Hero.anim using Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79deb239d52ebae73c14c0d9e20713c') in 0.010837 seconds 
+  Import took 0.016948 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.372781 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_2_Hero.anim
+  artifactKey: Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_2_Hero.anim using Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af0ad6cebd55431018b666e0bb34fa14') in 0.010880 seconds 
+  Import took 0.018368 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.493987 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/BattleDefense_Hero.anim
+  artifactKey: Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/BattleDefense_Hero.anim using Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc8247cb511f3b3f8a0552b664c30d2') in 0.010672 seconds 
+  Import took 0.017149 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.590406 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/idle_Hero.anim
+  artifactKey: Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/idle_Hero.anim using Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5185078866bcea1f5293011d5d8863d') in 0.010404 seconds 
+  Import took 0.017282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.449820 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/JumpDown_hero.anim
+  artifactKey: Guid(4fe6ecca8eced39429a9711afebafa13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/JumpDown_hero.anim using Guid(4fe6ecca8eced39429a9711afebafa13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bb3b55007a10495ad561c33791851f8') in 0.011266 seconds 
+  Import took 0.017408 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.732576 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f43b71e37baa02078247ac6f230a3ca') in 0.148109 seconds 
+  Import took 0.155532 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.079720 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '338698b0fc44eb9c22ee46217fadd3b6') in 0.017065 seconds 
+  Import took 0.023443 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.930278 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '134d71ca4bc249f7039990969aecd735') in 0.147421 seconds 
+  Import took 0.155743 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.143416 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '307fbb7a73f00a5d8b566c08c6e0c555') in 0.138838 seconds 
+  Import took 0.145152 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.438127 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c9eb9a39156fd504298f06909ecb906') in 0.153574 seconds 
+  Import took 0.159901 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.828826 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58514878f596b9daebac50396edbef1e') in 0.134538 seconds 
+  Import took 0.143801 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 77.911906 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
+  artifactKey: Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddb32018398136fff073d55d8fd27fbe') in 0.012814 seconds 
+  Import took 0.019220 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.352187 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Hero.controller
+  artifactKey: Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Hero.controller using Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab950e31428440357150b21315e594e') in 0.011081 seconds 
+  Import took 0.017253 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 80.037454 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Fly_Hero.anim
+  artifactKey: Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Fly_Hero.anim using Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fc4c118e162e359642c667cd3034164') in 0.010809 seconds 
+  Import took 0.017514 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.679321 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim
+  artifactKey: Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim using Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c0c3edb741a0faee473a8a59025c2ea') in 0.010334 seconds 
+  Import took 0.018290 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.353158 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Defense_Hero.anim
+  artifactKey: Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Defense_Hero.anim using Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f23de1f302a30ed4aebda70a8f1c9920') in 0.010305 seconds 
+  Import took 0.016809 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.167756 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Player_Hero.controller
+  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Player_Hero.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c47aa0a7ade9f96a6cf1a484f6b07108') in 0.016144 seconds 
+  Import took 0.026607 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.663421 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Idle_Hero.anim
+  artifactKey: Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Idle_Hero.anim using Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4b99336a1ea53d4b2575a3e7be5f62b') in 0.010581 seconds 
+  Import took 0.017066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.391647 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/move_Hero.anim
+  artifactKey: Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/move_Hero.anim using Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '847c6c27f4e643e2d7f625441d7a0595') in 0.010812 seconds 
+  Import took 0.018066 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.141664 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Move_Hero.anim
+  artifactKey: Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Move_Hero.anim using Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45a94d4dfdaa19a82be82cdf741e6f54') in 0.010528 seconds 
+  Import took 0.016953 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.173253 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/JumpUp_hero.anim
+  artifactKey: Guid(a7f99bb63e3564e43972f65a9ea3b296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/JumpUp_hero.anim using Guid(a7f99bb63e3564e43972f65a9ea3b296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bede49c97a3bb54057a40187b611aac') in 0.011212 seconds 
+  Import took 0.017459 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 29.879049 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.overrideController
+  artifactKey: Guid(6f1a4413bfd3a464c953d4c852a608fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.overrideController using Guid(6f1a4413bfd3a464c953d4c852a608fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6b66a2f6c7e5430a26e5ed0618d8937') in 0.007100 seconds 
+  Import took 0.013505 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 40.525514 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animation.anim
+  artifactKey: Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animation.anim using Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fa2b7463ba650cf291ff98f73ff6373') in 0.011628 seconds 
+  Import took 0.020343 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 139.752943 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero _0.controller
+  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero _0.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73604c6af288548c852d6328e2e0c6ee') in 0.015610 seconds 
+  Import took 0.023200 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.658596 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
+  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c634a0f6fdf1ee9b2b13a259455d5f1') in 0.003933 seconds 
+  Import took 0.010349 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.059425 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim
+  artifactKey: Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim using Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db00a3f381ee3f3f5880afa126335626') in 0.010741 seconds 
+  Import took 0.019195 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 118.172575 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up.anim
+  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06ce4cab59fc6a5850bc9962b28dcc97') in 0.010665 seconds 
+  Import took 0.017589 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.815675 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim
+  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eaae3f818d28b58ec0955af6803234c') in 0.010415 seconds 
+  Import took 0.016744 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 254.769587 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
+  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c494ce66e9b17df51e99e6b7715d84f7') in 0.008782 seconds 
+  Import took 0.016567 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.978811 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animator Override Controller.overrideController
+  artifactKey: Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animator Override Controller.overrideController using Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54ac6cf78da56eeac452a6e3fcc31935') in 0.010060 seconds 
+  Import took 0.016857 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 62.756768 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.overrideController
+  artifactKey: Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.overrideController using Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '131a964770044f4dd3c84229f59c624e') in 0.020708 seconds 
+  Import took 0.027257 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 58.818579 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim
+  artifactKey: Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim using Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b72325b2a06cd85825a0d67fe1be70b3') in 0.010978 seconds 
+  Import took 0.017310 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.464222 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim
+  artifactKey: Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim using Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '498eaa7094d3216cace166e93afa441b') in 0.011425 seconds 
+  Import took 0.017606 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.055900 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Defence_Dwarf.anim
+  artifactKey: Guid(bb85e3a7882774f4bb439a933b12e14b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Defence_Dwarf.anim using Guid(bb85e3a7882774f4bb439a933b12e14b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd346133ad93ecf2cd5abd993a9d32d5c') in 0.010333 seconds 
+  Import took 0.016570 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.629732 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim
+  artifactKey: Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim using Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ef641195cb8950eb1d795a41a07e02f') in 0.003568 seconds 
+  Import took 0.009684 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.703383 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Down_Dwarf.anim
+  artifactKey: Guid(96bd72e67bd4bcc4b907eebce10f03d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Down_Dwarf.anim using Guid(96bd72e67bd4bcc4b907eebce10f03d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852bacc05e327ef5c53b249c11c85b1c') in 0.011055 seconds 
+  Import took 0.017234 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.569320 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim
+  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9cbe27b8a1d7a77506b41ef29d57041') in 0.003395 seconds 
+  Import took 0.010582 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.964627 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Move_Dwarf.anim
+  artifactKey: Guid(dabd0af11fd078049ad17661a2d9f0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Move_Dwarf.anim using Guid(dabd0af11fd078049ad17661a2d9f0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f6e4d589e16bddafa5e97818a0cfad') in 0.011856 seconds 
+  Import took 0.019233 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.562890 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/TakeDamage_Dwarf.anim
+  artifactKey: Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/TakeDamage_Dwarf.anim using Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc84f6fb7f9327f52b997b1422fcf4cf') in 0.011789 seconds 
+  Import took 0.018284 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 147.747638 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk
+  artifactKey: Guid(41fb48e0b2969b0429e531f28372d0cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk using Guid(41fb48e0b2969b0429e531f28372d0cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb0e4626a20941e59305111eab1ce047') in 0.009496 seconds 
+  Import took 0.016107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.330275 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight
+  artifactKey: Guid(cb2cec9861f004541ab40e7ee64f564c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight using Guid(cb2cec9861f004541ab40e7ee64f564c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a030a3d71327bec7957bfb178a53446') in 0.009931 seconds 
+  Import took 0.016063 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 507.891191 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
+  artifactKey: Guid(ebd91ca8d0a808744bddf0f6a827cd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(ebd91ca8d0a808744bddf0f6a827cd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22cac4ec43c5761d0176dfe96671b471') in 0.004116 seconds 
+  Import took 0.012698 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 144.821780 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero V2 .aseprite
+  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6ef1a74dcecb03db783f7dc0eafae35') in 0.003729 seconds 
+  Import took 0.010497 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.109715 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66826ecd0158cf6aeadc6a7c5a3b560c') in 0.151836 seconds 
+  Import took 0.158522 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.815114 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e39989163b69c52a9d8a4b18d57fd1d7') in 0.142149 seconds 
+  Import took 0.148727 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.036475 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb43e0a6dd4ebef9ba0d1670925eed24') in 0.159651 seconds 
+  Import took 0.168438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 214.950196 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
+  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8de2b0d99a1c8bd176a4d15b2e0945b') in 0.179399 seconds 
+  Import took 0.186382 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
