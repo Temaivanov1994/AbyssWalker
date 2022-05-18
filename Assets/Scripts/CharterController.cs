@@ -16,6 +16,8 @@ public class CharterController : MonoBehaviour, IDamageable
         InitHealthBar();
         InitStaminaBar();
 
+       
+
         SwitchState(State.idle);
     }
     private void Update()
@@ -33,7 +35,7 @@ public class CharterController : MonoBehaviour, IDamageable
             Flip();
         }
 
-        if (!isDetectingGround && !isJump && !isAttack)
+        if (!isDetectingGround && !isJump && !isAttack && !isKnockback)
         {
             SwitchState(State.jump);
         }

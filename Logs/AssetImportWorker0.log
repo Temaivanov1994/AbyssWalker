@@ -15,11 +15,11 @@ Z:/Unity Projects/AbyssWalker
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53833
+61653
 Successfully changed project path to: Z:/Unity Projects/AbyssWalker
 Z:/Unity Projects/AbyssWalker
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 106.05 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 104.11 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.21f1 (a38c86f6690f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -35,74 +35,74 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56320
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004820 seconds.
+Registered in 0.004685 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 105.08 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 104.13 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  6.101 seconds
+- Completed reload, in  6.165 seconds
 Domain Reload Profiling:
-	ReloadAssembly (6102ms)
-		BeginReloadAssembly (123ms)
+	ReloadAssembly (6165ms)
+		BeginReloadAssembly (122ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1012ms)
-			LoadAssemblies (118ms)
+		EndReloadAssembly (1002ms)
+			LoadAssemblies (116ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (337ms)
+			SetupTypeCache (327ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (67ms)
-			SetupLoadedEditorAssemblies (383ms)
+			SetupLoadedEditorAssemblies (387ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (105ms)
+				RefreshPlugins (104ms)
 				BeforeProcessingInitializeOnLoad (35ms)
-				ProcessInitializeOnLoadAttributes (174ms)
-				ProcessInitializeOnLoadMethodAttributes (60ms)
+				ProcessInitializeOnLoadAttributes (176ms)
+				ProcessInitializeOnLoadMethodAttributes (63ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007011 seconds.
+Registered in 0.007088 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 106.86 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 102.55 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.480 seconds
+- Completed reload, in  2.478 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2482ms)
-		BeginReloadAssembly (323ms)
+	ReloadAssembly (2480ms)
+		BeginReloadAssembly (318ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (11ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (34ms)
+			CreateAndSetChildDomain (35ms)
 		EndReloadAssembly (2021ms)
-			LoadAssemblies (200ms)
+			LoadAssemblies (198ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (677ms)
+			SetupTypeCache (679ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (108ms)
-			SetupLoadedEditorAssemblies (766ms)
+			RebuildScriptCaches (112ms)
+			SetupLoadedEditorAssemblies (760ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (107ms)
-				BeforeProcessingInitializeOnLoad (173ms)
+				RefreshPlugins (103ms)
+				BeforeProcessingInitializeOnLoad (172ms)
 				ProcessInitializeOnLoadAttributes (427ms)
 				ProcessInitializeOnLoadMethodAttributes (33ms)
-				AfterProcessingInitializeOnLoad (17ms)
+				AfterProcessingInitializeOnLoad (16ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (15ms)
@@ -110,14 +110,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2201 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 97.9 MB.
 System memory in use after: 97.9 MB.
 
 Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2636.
-Total: 6.481400 ms (FindLiveObjects: 0.423500 ms CreateObjectMapping: 0.161500 ms MarkObjects: 5.763500 ms  DeleteObjects: 0.130300 ms)
+Total: 7.825200 ms (FindLiveObjects: 0.644800 ms CreateObjectMapping: 0.161200 ms MarkObjects: 6.877900 ms  DeleteObjects: 0.137600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,465 +131,1351 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Player.controller
-  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Player.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd30504f6b08c189c474e244ee314b74') in 0.075793 seconds 
-  Import took 0.082122 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 42.712412 seconds.
-  path: Assets/Resources/Charters/ProjectTiles
-  artifactKey: Guid(78b2f008b0724bb4bb78688215ba992c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/ProjectTiles using Guid(78b2f008b0724bb4bb78688215ba992c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22352f2f79793a09ee546ff4dfd1e178') in 0.009813 seconds 
-  Import took 0.018172 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.364299 seconds.
-  path: Assets/Resources/Charters/Heroes
-  artifactKey: Guid(71379df6b11a5c940a6ed06de3335097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes using Guid(71379df6b11a5c940a6ed06de3335097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3932ce82bf255e5ade0f3d6808dc5e3') in 0.009767 seconds 
-  Import took 0.015795 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.931973 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf
-  artifactKey: Guid(561a76c4fe7da144db7403f32b0dd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf using Guid(561a76c4fe7da144db7403f32b0dd081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17037c073c84cec96be15302b63451c1') in 0.009755 seconds 
-  Import took 0.015677 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.740043 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Hero_Dwarf.controller
-  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Hero_Dwarf.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd90e09296d91422da3e35fd012566804') in 0.015376 seconds 
-  Import took 0.021707 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.957866 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/PrepareBattle_Hero.anim
-  artifactKey: Guid(a8c7a41abe5f07a4cb3b2d4c436d7ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/PrepareBattle_Hero.anim using Guid(a8c7a41abe5f07a4cb3b2d4c436d7ffc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81a5fb79157331aadf3b430902b45e61') in 0.013043 seconds 
-  Import took 0.019219 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 43.760520 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero.aseprite
-  artifactKey: Guid(9ec7710e3d14eb14e8870645b7947ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero.aseprite using Guid(9ec7710e3d14eb14e8870645b7947ab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5273c58e702659dffbf54b516f903d6') in 0.013741 seconds 
-  Import took 0.020149 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.550242 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
-  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bffa860392a885ee1c59b809e5206b23') in 0.009740 seconds 
-  Import took 0.015736 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 251.899706 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
-  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24c206fbd35dd7e91a0e3f5f3f61597a') in 0.003834 seconds 
-  Import took 0.012023 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 127.664548 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
-  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13a1a1c18d7a6496ac3c707b74b0b016') in 0.003926 seconds 
-  Import took 0.011303 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.306239 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder
-  artifactKey: Guid(408316391e11c8c4d8487d661f95502b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder using Guid(408316391e11c8c4d8487d661f95502b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4f4dfe516b297224d3fa2f0e588df57') in 0.009346 seconds 
-  Import took 0.016891 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.013686 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_1_Hero.anim
-  artifactKey: Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_1_Hero.anim using Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79deb239d52ebae73c14c0d9e20713c') in 0.010837 seconds 
-  Import took 0.016948 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.372781 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_2_Hero.anim
-  artifactKey: Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_2_Hero.anim using Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af0ad6cebd55431018b666e0bb34fa14') in 0.010880 seconds 
-  Import took 0.018368 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.493987 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/BattleDefense_Hero.anim
-  artifactKey: Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/BattleDefense_Hero.anim using Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc8247cb511f3b3f8a0552b664c30d2') in 0.010672 seconds 
-  Import took 0.017149 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.590406 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/idle_Hero.anim
-  artifactKey: Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/idle_Hero.anim using Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5185078866bcea1f5293011d5d8863d') in 0.010404 seconds 
-  Import took 0.017282 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.449820 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/JumpDown_hero.anim
-  artifactKey: Guid(4fe6ecca8eced39429a9711afebafa13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/JumpDown_hero.anim using Guid(4fe6ecca8eced39429a9711afebafa13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bb3b55007a10495ad561c33791851f8') in 0.011266 seconds 
-  Import took 0.017408 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.732576 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f43b71e37baa02078247ac6f230a3ca') in 0.148109 seconds 
-  Import took 0.155532 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 23.079720 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '338698b0fc44eb9c22ee46217fadd3b6') in 0.017065 seconds 
-  Import took 0.023443 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.930278 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '134d71ca4bc249f7039990969aecd735') in 0.147421 seconds 
-  Import took 0.155743 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 28.143416 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '307fbb7a73f00a5d8b566c08c6e0c555') in 0.138838 seconds 
-  Import took 0.145152 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.438127 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c9eb9a39156fd504298f06909ecb906') in 0.153574 seconds 
-  Import took 0.159901 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.828826 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58514878f596b9daebac50396edbef1e') in 0.134538 seconds 
-  Import took 0.143801 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 77.911906 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
-  artifactKey: Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddb32018398136fff073d55d8fd27fbe') in 0.012814 seconds 
-  Import took 0.019220 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 22.352187 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Hero.controller
-  artifactKey: Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Hero.controller using Guid(fc369fc2c1c54844ab59ba8818958c3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab950e31428440357150b21315e594e') in 0.011081 seconds 
-  Import took 0.017253 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 80.037454 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Fly_Hero.anim
-  artifactKey: Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Fly_Hero.anim using Guid(923e7ab25ac3dd6479f7be8d6d8666d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fc4c118e162e359642c667cd3034164') in 0.010809 seconds 
-  Import took 0.017514 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.679321 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim
-  artifactKey: Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim using Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c0c3edb741a0faee473a8a59025c2ea') in 0.010334 seconds 
-  Import took 0.018290 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.353158 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Defense_Hero.anim
-  artifactKey: Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Defense_Hero.anim using Guid(d99c37f634814f94288529a1a99f52ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f23de1f302a30ed4aebda70a8f1c9920') in 0.010305 seconds 
-  Import took 0.016809 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.167756 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Player_Hero.controller
-  artifactKey: Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Player_Hero.controller using Guid(a2adcd8452ae8d84d9163888e560f789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c47aa0a7ade9f96a6cf1a484f6b07108') in 0.016144 seconds 
-  Import took 0.026607 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.663421 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Idle_Hero.anim
-  artifactKey: Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Idle_Hero.anim using Guid(4336adae429cad24eab9c63b8ce2d885) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4b99336a1ea53d4b2575a3e7be5f62b') in 0.010581 seconds 
-  Import took 0.017066 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.391647 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/move_Hero.anim
-  artifactKey: Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/move_Hero.anim using Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '847c6c27f4e643e2d7f625441d7a0595') in 0.010812 seconds 
-  Import took 0.018066 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.141664 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/Move_Hero.anim
-  artifactKey: Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Move_Hero.anim using Guid(25b8096e863353347afe0e9a68221b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45a94d4dfdaa19a82be82cdf741e6f54') in 0.010528 seconds 
-  Import took 0.016953 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 34.173253 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/JumpUp_hero.anim
-  artifactKey: Guid(a7f99bb63e3564e43972f65a9ea3b296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/JumpUp_hero.anim using Guid(a7f99bb63e3564e43972f65a9ea3b296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bede49c97a3bb54057a40187b611aac') in 0.011212 seconds 
-  Import took 0.017459 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 29.879049 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.overrideController
-  artifactKey: Guid(6f1a4413bfd3a464c953d4c852a608fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.overrideController using Guid(6f1a4413bfd3a464c953d4c852a608fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6b66a2f6c7e5430a26e5ed0618d8937') in 0.007100 seconds 
-  Import took 0.013505 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.525514 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animation.anim
-  artifactKey: Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animation.anim using Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fa2b7463ba650cf291ff98f73ff6373') in 0.011628 seconds 
-  Import took 0.020343 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 139.752943 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero _0.controller
-  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero _0.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73604c6af288548c852d6328e2e0c6ee') in 0.015610 seconds 
-  Import took 0.023200 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.658596 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
-  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c634a0f6fdf1ee9b2b13a259455d5f1') in 0.003933 seconds 
-  Import took 0.010349 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.059425 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim
-  artifactKey: Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim using Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db00a3f381ee3f3f5880afa126335626') in 0.010741 seconds 
-  Import took 0.019195 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 118.172575 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up.anim
-  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06ce4cab59fc6a5850bc9962b28dcc97') in 0.010665 seconds 
-  Import took 0.017589 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.815675 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim
-  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eaae3f818d28b58ec0955af6803234c') in 0.010415 seconds 
-  Import took 0.016744 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 254.769587 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller
-  artifactKey: Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Dwarf_Hero.controller using Guid(781a9914294364e47a583dff783d1c1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c494ce66e9b17df51e99e6b7715d84f7') in 0.008782 seconds 
-  Import took 0.016567 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.978811 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animator Override Controller.overrideController
-  artifactKey: Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/New Animator Override Controller.overrideController using Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54ac6cf78da56eeac452a6e3fcc31935') in 0.010060 seconds 
-  Import took 0.016857 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 62.756768 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.overrideController
-  artifactKey: Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.overrideController using Guid(ea68942f07740b943b4db226d6e55095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '131a964770044f4dd3c84229f59c624e') in 0.020708 seconds 
-  Import took 0.027257 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 58.818579 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim
-  artifactKey: Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim using Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b72325b2a06cd85825a0d67fe1be70b3') in 0.010978 seconds 
-  Import took 0.017310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.464222 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim
-  artifactKey: Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim using Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '498eaa7094d3216cace166e93afa441b') in 0.011425 seconds 
-  Import took 0.017606 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.055900 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Defence_Dwarf.anim
-  artifactKey: Guid(bb85e3a7882774f4bb439a933b12e14b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Defence_Dwarf.anim using Guid(bb85e3a7882774f4bb439a933b12e14b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd346133ad93ecf2cd5abd993a9d32d5c') in 0.010333 seconds 
-  Import took 0.016570 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.629732 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim
-  artifactKey: Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Idle_Dwarf.anim using Guid(a2cf814a68203724298dbfd782274f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ef641195cb8950eb1d795a41a07e02f') in 0.003568 seconds 
-  Import took 0.009684 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.703383 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Down_Dwarf.anim
-  artifactKey: Guid(96bd72e67bd4bcc4b907eebce10f03d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Down_Dwarf.anim using Guid(96bd72e67bd4bcc4b907eebce10f03d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852bacc05e327ef5c53b249c11c85b1c') in 0.011055 seconds 
-  Import took 0.017234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.569320 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim
-  artifactKey: Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Jump_Up_Dwarf.anim using Guid(42adf0056f64a0240897b33ae74af5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9cbe27b8a1d7a77506b41ef29d57041') in 0.003395 seconds 
-  Import took 0.010582 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.964627 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Move_Dwarf.anim
-  artifactKey: Guid(dabd0af11fd078049ad17661a2d9f0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Move_Dwarf.anim using Guid(dabd0af11fd078049ad17661a2d9f0db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f6e4d589e16bddafa5e97818a0cfad') in 0.011856 seconds 
-  Import took 0.019233 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 20.562890 seconds.
   path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/TakeDamage_Dwarf.anim
   artifactKey: Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/TakeDamage_Dwarf.anim using Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc84f6fb7f9327f52b997b1422fcf4cf') in 0.011789 seconds 
-  Import took 0.018284 seconds .
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/TakeDamage_Dwarf.anim using Guid(17578f740a4523b4db8fcc9a5c408403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4444e9a6ba2737e1e286c30a8888f72a') in 0.064133 seconds 
+  Import took 0.070613 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 147.747638 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroMonk
-  artifactKey: Guid(41fb48e0b2969b0429e531f28372d0cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroMonk using Guid(41fb48e0b2969b0429e531f28372d0cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb0e4626a20941e59305111eab1ce047') in 0.009496 seconds 
-  Import took 0.016107 seconds .
+  Time since last request: 32.850241 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim
+  artifactKey: Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim using Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3be4ae73f84dc6434fad8cbb94d3bbb1') in 0.010106 seconds 
+  Import took 0.016969 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.330275 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroKnight
-  artifactKey: Guid(cb2cec9861f004541ab40e7ee64f564c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroKnight using Guid(cb2cec9861f004541ab40e7ee64f564c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a030a3d71327bec7957bfb178a53446') in 0.009931 seconds 
-  Import took 0.016063 seconds .
+  Time since last request: 123.733664 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.prefab
+  artifactKey: Guid(e1eb7997525d7424f91a2309bef65ece) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Player_Dwarf.prefab using Guid(e1eb7997525d7424f91a2309bef65ece) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b37a739d37cce8f5cd258f35de7f7d6') in 0.240577 seconds 
+  Import took 0.248201 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 507.891191 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite
-  artifactKey: Guid(ebd91ca8d0a808744bddf0f6a827cd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/dwarf_Hero V2 .aseprite using Guid(ebd91ca8d0a808744bddf0f6a827cd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22cac4ec43c5761d0176dfe96671b471') in 0.004116 seconds 
-  Import took 0.012698 seconds .
+  Time since last request: 59.819880 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim
+  artifactKey: Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim using Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee09c6f06e415a08e06f7b6c81c7b46a') in 0.013149 seconds 
+  Import took 0.020042 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 144.821780 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero V2 .aseprite
-  artifactKey: Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero V2 .aseprite using Guid(cc583fdb069747945af682f9f59220c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6ef1a74dcecb03db783f7dc0eafae35') in 0.003729 seconds 
-  Import took 0.010497 seconds .
+  Time since last request: 2.205283 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim
+  artifactKey: Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim using Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9231bdc256aa70b4f15dd056ecc52fc') in 0.003353 seconds 
+  Import took 0.009775 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 12.109715 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66826ecd0158cf6aeadc6a7c5a3b560c') in 0.151836 seconds 
-  Import took 0.158522 seconds .
+  Time since last request: 421.165706 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim
+  artifactKey: Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/Attack_Ground_Hero.anim using Guid(6ff60d101492dbc47ac5813ea4bc6a39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebf4d7a13f72e17d3c0d8ff6dd856e9b') in 0.019029 seconds 
+  Import took 0.025970 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 13.815114 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e39989163b69c52a9d8a4b18d57fd1d7') in 0.142149 seconds 
-  Import took 0.148727 seconds .
+  Time since last request: 128.502792 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim
+  artifactKey: Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Ground_Dwarf.anim using Guid(a3d2e4c10d377b04aabbeacb3552d07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16845e94950a9c7a87f01d4aa36de0d2') in 0.010931 seconds 
+  Import took 0.018687 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 54.036475 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb43e0a6dd4ebef9ba0d1670925eed24') in 0.159651 seconds 
-  Import took 0.168438 seconds .
+  Time since last request: 1.515340 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim
+  artifactKey: Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf.anim using Guid(0b292f863914ed14eac06ecfeab7c29c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a48357134d84978de2fa28b29b43a3b8') in 0.010134 seconds 
+  Import took 0.016946 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 214.950196 seconds.
-  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png
-  artifactKey: Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/dwarf_Hero .png using Guid(e7de2a1648d9c3e4b9ad544592a426e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8de2b0d99a1c8bd176a4d15b2e0945b') in 0.179399 seconds 
-  Import took 0.186382 seconds .
+  Time since last request: 219.557443 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.aseprite
+  artifactKey: Guid(15bf6f3c0f01b1242be62f50be6b357f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.aseprite using Guid(15bf6f3c0f01b1242be62f50be6b357f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '266513a69725ef90fd7a0401aef1ea4f') in 0.014171 seconds 
+  Import took 0.025097 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 79.668884 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png
+  artifactKey: Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png using Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '606676a5175b683552f354933be29b10') in 0.061843 seconds 
+  Import took 0.068607 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.758239 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png
+  artifactKey: Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png using Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93e99d8274edaf612e36f0815007cefb') in 0.019067 seconds 
+  Import took 0.025448 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.427317 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png
+  artifactKey: Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png using Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb2765d6b3b0f199d10781f577847e16') in 0.148739 seconds 
+  Import took 0.155168 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.729654 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9757fecbded726d8730f56664ae1b5e4') in 0.009205 seconds 
+  Import took 0.015329 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.475189 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '716b819b35fd0be5e791cf930c76cdb3') in 0.011256 seconds 
+  Import took 0.018766 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 44.002968 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46d98bf196249308cffeaa0ca73ec54c') in 0.054902 seconds 
+  Import took 0.061588 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.797025 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/New Animation.anim
+  artifactKey: Guid(12b63cbf3e07ff94cab13a00a05a3567) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/New Animation.anim using Guid(12b63cbf3e07ff94cab13a00a05a3567) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c052de067e1aef757073c75a7ee580e5') in 0.010375 seconds 
+  Import took 0.016999 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 63.455606 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim
+  artifactKey: Guid(d34bf143baabff64f9799b552af3d0df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim using Guid(d34bf143baabff64f9799b552af3d0df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee359fed4aa18482e1f2656a22a46a44') in 0.010756 seconds 
+  Import took 0.017444 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 89.657107 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight.anim
+  artifactKey: Guid(78f58536eb5fdc64c84401dd4db37127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight.anim using Guid(78f58536eb5fdc64c84401dd4db37127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc43762c7b64c85c93eb9d1d47db1606') in 0.011537 seconds 
+  Import took 0.018872 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.517006 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight.anim
+  artifactKey: Guid(c36e5cb22e8ba6e47896df3e85eeb1b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight.anim using Guid(c36e5cb22e8ba6e47896df3e85eeb1b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30fda2f1de0cdf030b923d123848f559') in 0.010723 seconds 
+  Import took 0.016994 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.414225 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight 1.anim
+  artifactKey: Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight 1.anim using Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a08416579e26a4e99857061f260aadc') in 0.010769 seconds 
+  Import took 0.019293 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.907571 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight.anim
+  artifactKey: Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight.anim using Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b13ebc9123989ab148699fdbbd42199') in 0.010266 seconds 
+  Import took 0.016647 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.643406 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight 1.anim
+  artifactKey: Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight 1.anim using Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '248ba8fb720f2fe34bf2651e99cf6810') in 0.010424 seconds 
+  Import took 0.016975 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.673176 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight 1.anim
+  artifactKey: Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight 1.anim using Guid(5da70785234f1de479b4c40abf708320) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9411bf5ea62aefece854dbdd1edbe2cd') in 0.010658 seconds 
+  Import took 0.017001 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.835191 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Move.anim
+  artifactKey: Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Move.anim using Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92b5cc9100faf5191227d6741cbe5f5c') in 0.010812 seconds 
+  Import took 0.017254 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.671586 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim
+  artifactKey: Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim using Guid(6beaa6c38d762c24799523b39e5d016c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62032f2541107d8ff72009a8afc027e3') in 0.010748 seconds 
+  Import took 0.017034 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.274594 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim
+  artifactKey: Guid(d34bf143baabff64f9799b552af3d0df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim using Guid(d34bf143baabff64f9799b552af3d0df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e92e17cba5235c77cd6af2a68e0099e') in 0.003809 seconds 
+  Import took 0.011053 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.951018 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight 1.anim
+  artifactKey: Guid(4a1368b02aacf9f4c820be6d06e9ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight 1.anim using Guid(4a1368b02aacf9f4c820be6d06e9ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e51b24afe9632b64d3dc949d630014b') in 0.010818 seconds 
+  Import took 0.017079 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.881032 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim
+  artifactKey: Guid(4a1368b02aacf9f4c820be6d06e9ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim using Guid(4a1368b02aacf9f4c820be6d06e9ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3305a0589f711c13bc233521bae9827a') in 0.010397 seconds 
+  Import took 0.016690 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.838830 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af0fb4cfab0df32516c4b1ce71b99ac7') in 0.011900 seconds 
+  Import took 0.018806 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.530052 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight 1.anim
+  artifactKey: Guid(c82dfd8d8f8f9bf4da0429006089de89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight 1.anim using Guid(c82dfd8d8f8f9bf4da0429006089de89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cadb69b2b1807f1ddd0574479f0f3789') in 0.003563 seconds 
+  Import took 0.009829 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.026288 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Defence_Knight.anim
+  artifactKey: Guid(c82dfd8d8f8f9bf4da0429006089de89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Defence_Knight.anim using Guid(c82dfd8d8f8f9bf4da0429006089de89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff886dc82c4a385f3f614764837f14a0') in 0.011972 seconds 
+  Import took 0.019687 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.493602 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7903f6d3fb60c22d820639ce18b6cbbc') in 0.013772 seconds 
+  Import took 0.020544 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.506991 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf 1.anim
+  artifactKey: Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroDwarf/New Folder/Attack_Fly_Dwarf 1.anim using Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75d8fcfb0924037eb4b435736e620788') in 0.011498 seconds 
+  Import took 0.018094 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.802387 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Dwarf 1.anim
+  artifactKey: Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Dwarf 1.anim using Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73dc19f2c9c141dafd6b0dee811886db') in 0.010385 seconds 
+  Import took 0.016844 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.008087 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim
+  artifactKey: Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim using Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61f81130856ba27e0ea9684c4c282170') in 0.003481 seconds 
+  Import took 0.009574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.949991 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim
+  artifactKey: Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim using Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '758bef4d3056238b45913217860bd3f5') in 0.003687 seconds 
+  Import took 0.009857 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.534539 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Defence_Dwarf 1.anim
+  artifactKey: Guid(351d991e9fbf2314991a61f6ed5679cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Defence_Dwarf 1.anim using Guid(351d991e9fbf2314991a61f6ed5679cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd38fe3129f2b764f7755aeb7307487eb') in 0.010739 seconds 
+  Import took 0.017666 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.584401 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Defence_Knight.anim
+  artifactKey: Guid(351d991e9fbf2314991a61f6ed5679cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Defence_Knight.anim using Guid(351d991e9fbf2314991a61f6ed5679cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bed1c39983036bfe5a7538397f578bc4') in 0.003850 seconds 
+  Import took 0.011190 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.535626 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Idle_Dwarf 1.anim
+  artifactKey: Guid(6e36d799cdc0b96459862576cb4c2f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Idle_Dwarf 1.anim using Guid(6e36d799cdc0b96459862576cb4c2f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf19424801e0b446a4ca0155109e13f9') in 0.011147 seconds 
+  Import took 0.018529 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.830401 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim
+  artifactKey: Guid(6e36d799cdc0b96459862576cb4c2f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Idle_Knight.anim using Guid(6e36d799cdc0b96459862576cb4c2f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20e206f58b20301c20290cd381316d8b') in 0.003689 seconds 
+  Import took 0.009855 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.445073 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Dwarf 1.anim
+  artifactKey: Guid(2f2e50d56d59f594aa226817fc8229f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Dwarf 1.anim using Guid(2f2e50d56d59f594aa226817fc8229f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afd4b6922437f4f7bbd0ce3b3b24eb73') in 0.010417 seconds 
+  Import took 0.017608 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.807410 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight.anim
+  artifactKey: Guid(2f2e50d56d59f594aa226817fc8229f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Down_Knight.anim using Guid(2f2e50d56d59f594aa226817fc8229f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db5d7831b19756917df378320a8849f8') in 0.003515 seconds 
+  Import took 0.009590 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.514212 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Dwarf 1.anim
+  artifactKey: Guid(9c3946efc1769d74c88403aecd2d5095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Dwarf 1.anim using Guid(9c3946efc1769d74c88403aecd2d5095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f01fbfb775aaf2ec42e3b8e1d1842f71') in 0.012256 seconds 
+  Import took 0.019571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.405176 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight.anim
+  artifactKey: Guid(9c3946efc1769d74c88403aecd2d5095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Jump_Up_Knight.anim using Guid(9c3946efc1769d74c88403aecd2d5095) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '232d272391bd6df1081c0a2dee34b924') in 0.003524 seconds 
+  Import took 0.009623 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.472478 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Move_Dwarf 1.anim
+  artifactKey: Guid(db0780f4364ac294db71ea63b8dbd3b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Move_Dwarf 1.anim using Guid(db0780f4364ac294db71ea63b8dbd3b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c67325b1c86e18c6e405e7677462575f') in 0.010764 seconds 
+  Import took 0.018416 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.954017 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight.anim
+  artifactKey: Guid(db0780f4364ac294db71ea63b8dbd3b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Move_Knight.anim using Guid(db0780f4364ac294db71ea63b8dbd3b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '457d1c673c6d2ea6c7b88610221db561') in 0.003672 seconds 
+  Import took 0.010933 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.457972 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/TakeDamage_Dwarf 1.anim
+  artifactKey: Guid(bafe0feec56a52040a5addcd89c92e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/TakeDamage_Dwarf 1.anim using Guid(bafe0feec56a52040a5addcd89c92e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63218bc71d2e485ae7e1137f29587e5') in 0.010522 seconds 
+  Import took 0.018360 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.610274 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/TakeDamage_Knight.anim
+  artifactKey: Guid(bafe0feec56a52040a5addcd89c92e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/TakeDamage_Knight.anim using Guid(bafe0feec56a52040a5addcd89c92e36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e09a28a379d38592ca11c925ef1710cd') in 0.010462 seconds 
+  Import took 0.016660 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.092178 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed80a00f2dfaf50fa769484ade0b70d5') in 0.010451 seconds 
+  Import took 0.017260 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 478.048884 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim
+  artifactKey: Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Ground_Knight.anim using Guid(0e33c548056652b449187ca8c6f8c326) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3dfc6d2c1a6b1bcd091dd4192812b41') in 0.004280 seconds 
+  Import took 0.012405 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.763419 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim
+  artifactKey: Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight.anim using Guid(566e1aa88df27d84ba8164c8bc57d68b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0c616f6615be0d6b6a9e843b8e56164') in 0.003913 seconds 
+  Import took 0.010462 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 956.047878 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png
+  artifactKey: Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png using Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2112935bb073b20d1c101f621b1c352') in 0.181659 seconds 
+  Import took 0.188938 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.117367 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png
+  artifactKey: Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Knight_Hero.png using Guid(b0d797680af22cb40b979f0c9194c657) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '219d1c0d0ae082738ed7713f3ed8b98e') in 0.150795 seconds 
+  Import took 0.157431 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 187.236037 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.prefab
+  artifactKey: Guid(7aaa3434e8ff2bb4fb4c8ec3ec3f0c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.prefab using Guid(7aaa3434e8ff2bb4fb4c8ec3ec3f0c95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'febed4a63112b713c47275d6126867f7') in 0.058623 seconds 
+  Import took 0.066161 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 245.164437 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.aseprite
+  artifactKey: Guid(23c6540f7d6dd1444a7b6bd22831631d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.aseprite using Guid(23c6540f7d6dd1444a7b6bd22831631d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6870c8261e21f561b252ad124b350cf1') in 0.010818 seconds 
+  Import took 0.018635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 254.802746 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.aseprite
+  artifactKey: Guid(23c6540f7d6dd1444a7b6bd22831631d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.aseprite using Guid(23c6540f7d6dd1444a7b6bd22831631d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '912a17012aea07ed3edc420bd11981b8') in 0.005633 seconds 
+  Import took 0.015628 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.261390 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png
+  artifactKey: Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png using Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0452f6377d058b6846c8ba6759633079') in 0.028990 seconds 
+  Import took 0.035578 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.134323 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png
+  artifactKey: Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png using Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d3520e09754e640058cba778b52b3f1') in 0.017421 seconds 
+  Import took 0.024206 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.977728 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png
+  artifactKey: Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Hero_Monk.png using Guid(1295edc92cce59b44a17886909d11441) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ef8d3c016084b2696d623a828adc9d5') in 0.158659 seconds 
+  Import took 0.165256 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.332271 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight 1.anim
+  artifactKey: Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Attack_Fly_Knight 1.anim using Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55316f535b5a7d3377fa568d2fff1fb8') in 0.011680 seconds 
+  Import took 0.019065 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.629836 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Attack_Fly_Monk.anim
+  artifactKey: Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Attack_Fly_Monk.anim using Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d445e4e91ae2bbf7492fbac3918d9c6') in 0.012672 seconds 
+  Import took 0.019866 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.485965 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Knight 1.anim
+  artifactKey: Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Knight 1.anim using Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9eb2dcbdb4dfcdf25af4edae39d1f267') in 0.011070 seconds 
+  Import took 0.018524 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.719914 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Monk.anim
+  artifactKey: Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Monk.anim using Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bb6b1ddded027c353f36fc87cd930a8') in 0.013098 seconds 
+  Import took 0.019364 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.573550 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Defence_Knight 1.anim
+  artifactKey: Guid(3ca03c09cfb77814eb992139a028f60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Defence_Knight 1.anim using Guid(3ca03c09cfb77814eb992139a028f60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f37f673cbe12ec4e1e50e304fcc6b1e') in 0.012738 seconds 
+  Import took 0.019211 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.487375 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Defence_Monk.anim
+  artifactKey: Guid(3ca03c09cfb77814eb992139a028f60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Defence_Monk.anim using Guid(3ca03c09cfb77814eb992139a028f60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4924fb820565f46efbe8c0d3252995d0') in 0.013013 seconds 
+  Import took 0.019397 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.423426 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Idle_Knight 1.anim
+  artifactKey: Guid(ec49e671ff3bc3f4d9a849664bbec460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Idle_Knight 1.anim using Guid(ec49e671ff3bc3f4d9a849664bbec460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd513319fc7902ac7ad031424757f3eb') in 0.010707 seconds 
+  Import took 0.016985 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.314187 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Idle_Monk.anim
+  artifactKey: Guid(ec49e671ff3bc3f4d9a849664bbec460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Idle_Monk.anim using Guid(ec49e671ff3bc3f4d9a849664bbec460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa1da232c4efe6e1819fcd459d51f3a9') in 0.011033 seconds 
+  Import took 0.017786 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.718303 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Jump_Down_Knight 1.anim
+  artifactKey: Guid(dbd89b207dbc80b498f3f48dfe0794b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Jump_Down_Knight 1.anim using Guid(dbd89b207dbc80b498f3f48dfe0794b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92c51502024bea79b33aea0b38dfbd55') in 0.010783 seconds 
+  Import took 0.016980 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.319698 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Jump_Down_Monk.anim
+  artifactKey: Guid(dbd89b207dbc80b498f3f48dfe0794b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Jump_Down_Monk.anim using Guid(dbd89b207dbc80b498f3f48dfe0794b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b769eb4733eb707c1bee4f27fc05ff0') in 0.011015 seconds 
+  Import took 0.018304 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.527385 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Jump_Up_Knight 1.anim
+  artifactKey: Guid(95fe6f9309333d84c924f01f673f485e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Jump_Up_Knight 1.anim using Guid(95fe6f9309333d84c924f01f673f485e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '956fcc35a581f4df116295e2c78fae81') in 0.010722 seconds 
+  Import took 0.017524 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.035055 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Jump_Up_Monk.anim
+  artifactKey: Guid(95fe6f9309333d84c924f01f673f485e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Jump_Up_Monk.anim using Guid(95fe6f9309333d84c924f01f673f485e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85b2e41deec788de1a44217858be5c50') in 0.010575 seconds 
+  Import took 0.017993 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.548319 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Move_Knight 1.anim
+  artifactKey: Guid(46041ff835df53142bf0f76cab9304c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Move_Knight 1.anim using Guid(46041ff835df53142bf0f76cab9304c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d2fba7e3f50d820c18c629c491515b8') in 0.010580 seconds 
+  Import took 0.016865 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.181780 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Move_Monk.anim
+  artifactKey: Guid(46041ff835df53142bf0f76cab9304c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Move_Monk.anim using Guid(46041ff835df53142bf0f76cab9304c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffa0b95da32b0604fc3a7ce6690a2e1c') in 0.010336 seconds 
+  Import took 0.016617 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.560554 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/TakeDamage_Knight 1.anim
+  artifactKey: Guid(fab77ee1c5d48a54eb58ad533b062dc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/TakeDamage_Knight 1.anim using Guid(fab77ee1c5d48a54eb58ad533b062dc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '316cfe67902a5ef1195b9a6af1195f69') in 0.010458 seconds 
+  Import took 0.016664 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.030146 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/TakeDamage_Monk.anim
+  artifactKey: Guid(fab77ee1c5d48a54eb58ad533b062dc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/TakeDamage_Monk.anim using Guid(fab77ee1c5d48a54eb58ad533b062dc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '424973400e92d1fbd6d2df98a8bc340c') in 0.010462 seconds 
+  Import took 0.016808 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.026923 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Player_Monk.overrideController
+  artifactKey: Guid(29c77807ca7a17e4db4ba912900f0336) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Player_Monk.overrideController using Guid(29c77807ca7a17e4db4ba912900f0336) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a65e555248517ccbe55e43b919759b3d') in 0.010501 seconds 
+  Import took 0.016945 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 258.171729 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Monk.anim
+  artifactKey: Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Attack_Ground_Monk.anim using Guid(1598616f2eb87f24cae8a8a43acafd01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5bdf792b65bfc975578b51f98e20db6') in 0.004564 seconds 
+  Import took 0.012842 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 94.138910 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Attack_Fly_Monk.anim
+  artifactKey: Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Attack_Fly_Monk.anim using Guid(cd62d5cd9c4e7994ba8ad995e0261d12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01b143ac08fce78fefa38a46c63a8f9b') in 0.004199 seconds 
+  Import took 0.010466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 198.240204 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroMonk/Player_Monk.prefab
+  artifactKey: Guid(8ce0ecfb3b8f7d74daac4ad4084b6bad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroMonk/Player_Monk.prefab using Guid(8ce0ecfb3b8f7d74daac4ad4084b6bad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f274fa73618a584e7d44be14afe1513') in 0.046373 seconds 
+  Import took 0.054459 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 112.833401 seconds.
+  path: Assets/Resources/Charters/Enemy/Cretures
+  artifactKey: Guid(74af35e99e2999a498c3df4b9002466a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Enemy/Cretures using Guid(74af35e99e2999a498c3df4b9002466a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06b9455a8b19a29339ea10f5f2a15fd4') in 0.009971 seconds 
+  Import took 0.017643 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.273973 seconds.
+  path: Assets/Resources/Charters/Enemy/Obstacles
+  artifactKey: Guid(d2d61cd2a93453a469e9d6e0dd608379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Enemy/Obstacles using Guid(d2d61cd2a93453a469e9d6e0dd608379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb73b9a1294c4cb661bf4eb3c1a3515d') in 0.009748 seconds 
+  Import took 0.016138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.309612 seconds.
+  path: Assets/Resources/Prefabs/Player.prefab
+  artifactKey: Guid(ba5ad3440ec33f0499b860d4d9523991) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Player.prefab using Guid(ba5ad3440ec33f0499b860d4d9523991) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f464782a4cbb00e158a893da1b2d2323') in 0.036259 seconds 
+  Import took 0.043635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 152.099618 seconds.
+  path: Assets/Resources/Charters/Enemy/Cretures/Bosses
+  artifactKey: Guid(0ff87d7e37e5a3d4bba2cbcdcccb6bd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Enemy/Cretures/Bosses using Guid(0ff87d7e37e5a3d4bba2cbcdcccb6bd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3d9aa63308d0d142b76c2d939fb3ea1') in 0.011743 seconds 
+  Import took 0.018635 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.689199 seconds.
+  path: Assets/Resources/TileMap/Obstacles/Spikes.aseprite
+  artifactKey: Guid(644c34cb8881dba4abb9076a3869f997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TileMap/Obstacles/Spikes.aseprite using Guid(644c34cb8881dba4abb9076a3869f997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce50d9166638ff311ad499978f910bba') in 0.012857 seconds 
+  Import took 0.020107 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.371060 seconds.
+  path: Assets/Resources/TileMap/Obstacles/Spikes.png
+  artifactKey: Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TileMap/Obstacles/Spikes.png using Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b123f9478ca231eba9007a91c1fee18') in 0.023023 seconds 
+  Import took 0.029835 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.125903 seconds.
+  path: Assets/Resources/TileMap/Obstacles/Spikes.png
+  artifactKey: Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TileMap/Obstacles/Spikes.png using Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99748b72c9e8e078c41bc23e39935a7a') in 0.019828 seconds 
+  Import took 0.026449 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.768327 seconds.
+  path: Assets/Resources/TileMap/Obstacles/Spikes.png
+  artifactKey: Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TileMap/Obstacles/Spikes.png using Guid(58fa2b18f8344c64d88a2a833bc3f18a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94adc630205dd5aa13ce9247f386210f') in 0.059701 seconds 
+  Import took 0.066116 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.210232 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.778 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2779ms)
+		BeginReloadAssembly (269ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (85ms)
+		EndReloadAssembly (2360ms)
+			LoadAssemblies (230ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (744ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (109ms)
+			SetupLoadedEditorAssemblies (998ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (195ms)
+				ProcessInitializeOnLoadAttributes (747ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (23ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.0 MB.
+System memory in use after: 99.2 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2658.
+Total: 6.362900 ms (FindLiveObjects: 0.372400 ms CreateObjectMapping: 0.159100 ms MarkObjects: 5.777400 ms  DeleteObjects: 0.051600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007046 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.04 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.387 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2387ms)
+		BeginReloadAssembly (229ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (70ms)
+		EndReloadAssembly (2009ms)
+			LoadAssemblies (199ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (779ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (98ms)
+			SetupLoadedEditorAssemblies (672ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (180ms)
+				ProcessInitializeOnLoadAttributes (440ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.2 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2660.
+Total: 6.520400 ms (FindLiveObjects: 0.371400 ms CreateObjectMapping: 0.159600 ms MarkObjects: 5.953100 ms  DeleteObjects: 0.033800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007070 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.369 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2370ms)
+		BeginReloadAssembly (241ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (78ms)
+		EndReloadAssembly (1975ms)
+			LoadAssemblies (211ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (711ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (101ms)
+			SetupLoadedEditorAssemblies (659ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (180ms)
+				ProcessInitializeOnLoadAttributes (426ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.2 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2662.
+Total: 6.118800 ms (FindLiveObjects: 0.363000 ms CreateObjectMapping: 0.159500 ms MarkObjects: 5.562300 ms  DeleteObjects: 0.032000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007950 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.09 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.798 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2798ms)
+		BeginReloadAssembly (258ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (74ms)
+		EndReloadAssembly (2353ms)
+			LoadAssemblies (229ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1010ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (103ms)
+			SetupLoadedEditorAssemblies (709ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (183ms)
+				ProcessInitializeOnLoadAttributes (473ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.2 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2664.
+Total: 13.883000 ms (FindLiveObjects: 0.611200 ms CreateObjectMapping: 0.160400 ms MarkObjects: 13.055000 ms  DeleteObjects: 0.053400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007268 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.514 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2515ms)
+		BeginReloadAssembly (254ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (17ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (71ms)
+		EndReloadAssembly (2108ms)
+			LoadAssemblies (222ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (740ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (102ms)
+			SetupLoadedEditorAssemblies (719ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (198ms)
+				ProcessInitializeOnLoadAttributes (467ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.2 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2666.
+Total: 6.231400 ms (FindLiveObjects: 0.359700 ms CreateObjectMapping: 0.159100 ms MarkObjects: 5.674500 ms  DeleteObjects: 0.036000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007310 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.628 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2629ms)
+		BeginReloadAssembly (244ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (72ms)
+		EndReloadAssembly (2236ms)
+			LoadAssemblies (235ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (800ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (126ms)
+			SetupLoadedEditorAssemblies (713ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (199ms)
+				ProcessInitializeOnLoadAttributes (453ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (22ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (21ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.09 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2668.
+Total: 8.783800 ms (FindLiveObjects: 0.355600 ms CreateObjectMapping: 0.159700 ms MarkObjects: 8.224200 ms  DeleteObjects: 0.041700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006957 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.542 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2542ms)
+		BeginReloadAssembly (255ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (14ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (80ms)
+		EndReloadAssembly (2121ms)
+			LoadAssemblies (201ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (752ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (101ms)
+			SetupLoadedEditorAssemblies (681ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (190ms)
+				ProcessInitializeOnLoadAttributes (439ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.10 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2670.
+Total: 6.078800 ms (FindLiveObjects: 0.337700 ms CreateObjectMapping: 0.159500 ms MarkObjects: 5.550700 ms  DeleteObjects: 0.028900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007852 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.640 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2641ms)
+		BeginReloadAssembly (277ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (75ms)
+		EndReloadAssembly (2204ms)
+			LoadAssemblies (250ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (791ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (123ms)
+			SetupLoadedEditorAssemblies (675ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (185ms)
+				ProcessInitializeOnLoadAttributes (436ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (18ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (30ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.1 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2672.
+Total: 7.796700 ms (FindLiveObjects: 0.402600 ms CreateObjectMapping: 0.198000 ms MarkObjects: 7.133100 ms  DeleteObjects: 0.058400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007067 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.494 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2494ms)
+		BeginReloadAssembly (235ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (67ms)
+		EndReloadAssembly (2118ms)
+			LoadAssemblies (213ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (726ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (121ms)
+			SetupLoadedEditorAssemblies (672ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (181ms)
+				ProcessInitializeOnLoadAttributes (432ms)
+				ProcessInitializeOnLoadMethodAttributes (30ms)
+				AfterProcessingInitializeOnLoad (17ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.09 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.2 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2674.
+Total: 6.003100 ms (FindLiveObjects: 0.362000 ms CreateObjectMapping: 0.161200 ms MarkObjects: 5.446300 ms  DeleteObjects: 0.031500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 925.032962 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44021d8ee2f66045f56bb6fb3e97dc40') in 0.050973 seconds 
+  Import took 0.058337 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.995077 seconds.
+  path: Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController
+  artifactKey: Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Charters/Heroes/HeroKnight/Player_Knight.overrideController using Guid(81baaf71f42c3cc4d8cff3d0bcaa2560) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0293e7c71f5ee0093423284c847340e1') in 0.013195 seconds 
+  Import took 0.019794 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007369 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.05 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.412 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2413ms)
+		BeginReloadAssembly (231ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (18ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (72ms)
+		EndReloadAssembly (2040ms)
+			LoadAssemblies (199ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (678ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (99ms)
+			SetupLoadedEditorAssemblies (656ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (177ms)
+				ProcessInitializeOnLoadAttributes (426ms)
+				ProcessInitializeOnLoadMethodAttributes (24ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.2 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2676.
+Total: 6.127900 ms (FindLiveObjects: 0.343600 ms CreateObjectMapping: 0.165200 ms MarkObjects: 5.586700 ms  DeleteObjects: 0.030300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007310 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.13 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.468 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2469ms)
+		BeginReloadAssembly (231ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (74ms)
+		EndReloadAssembly (2096ms)
+			LoadAssemblies (201ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (684ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (107ms)
+			SetupLoadedEditorAssemblies (683ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (185ms)
+				ProcessInitializeOnLoadAttributes (445ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+Switching build target platform(19) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.09 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2181 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 99.2 MB.
+System memory in use after: 99.3 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2678.
+Total: 6.009100 ms (FindLiveObjects: 0.348900 ms CreateObjectMapping: 0.159600 ms MarkObjects: 5.461500 ms  DeleteObjects: 0.036500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
