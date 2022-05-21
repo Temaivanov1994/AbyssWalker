@@ -724,8 +724,8 @@ MonoBehaviour:
   maxStamina: 50
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
-  groundAttackStaminaCost: 30
-  flyAttackStaminaCost: 15
+  groundAttackStaminaCost: 20
+  flyAttackStaminaCost: 10
   defenseStaminaCost: 10
   groundAttackDamage: 1
   flyAttackDamage: 1
@@ -770,13 +770,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   jumpButton: 0
-  defenseDuration: 0.5
+  defenseDuration: 1
   groundAttackDuration: 0.417
-  attackSpeed: 7
+  attackSpeed: 2
   flyAttackDuration: 0.417
   attackPoint: {fileID: 5484742207812079481}
   attackRaduis: 0.3
-  knockbackDuration: 0.1
+  knockbackDuration: 0.2
+  bloodPartical: {fileID: 0}
+  healPartical: {fileID: 0}
   drinkEstusDuration: 3
   healingPower: 3
   playerSource: {fileID: 0}
@@ -846,7 +848,7 @@ SpriteRenderer:
   m_SortingLayerID: 876986771
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5752264657789789206, guid: bf3fc01c00eb5aa4093c9467047c0c35, type: 3}
+  m_Sprite: {fileID: -8227493851329493928, guid: 1295edc92cce59b44a17886909d11441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -893,7 +895,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 2.5}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

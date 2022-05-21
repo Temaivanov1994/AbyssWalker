@@ -1651,13 +1651,15 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   jumpButton: 0
-  defenseDuration: 0.5
+  defenseDuration: 1
   groundAttackDuration: 0.667
   attackSpeed: 5
   flyAttackDuration: 0.417
   attackPoint: {fileID: 2392630676155717973}
   attackRaduis: 0.3
   knockbackDuration: 0.1
+  bloodPartical: {fileID: 0}
+  healPartical: {fileID: 0}
   drinkEstusDuration: 3
   healingPower: 3
   playerSource: {fileID: 0}

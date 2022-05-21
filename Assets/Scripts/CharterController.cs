@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharterController : MonoBehaviour, IDamageable
 {
@@ -15,8 +16,8 @@ public class CharterController : MonoBehaviour, IDamageable
     {
         InitHealthBar();
         InitStaminaBar();
-
-       
+        bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Blood");
+        healPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Heal");
 
         SwitchState(State.idle);
     }
@@ -42,8 +43,11 @@ public class CharterController : MonoBehaviour, IDamageable
 
         #region KeyboardControl
 
+        if (!isKnockback)
+        {
+            movementDirection = Input.GetAxisRaw("Horizontal");
 
-        movementDirection = Input.GetAxisRaw("Horizontal");
+        }
 
         if (Input.GetButtonDown("Jump") && isDetectingGround)
         {
@@ -121,15 +125,7 @@ public class CharterController : MonoBehaviour, IDamageable
         }
     }
 
-    private void Flip()
-    {
-        if (!isAttack)
-        {
-            facingRight = !facingRight;
 
-            transform.Rotate(0, 180, 0);
-        }
-    }
 
 
     #region Stats
@@ -395,8 +391,6 @@ public class CharterController : MonoBehaviour, IDamageable
 
     #region IdleState
 
-
-
     private void EnterIdleState()
     {
 
@@ -404,7 +398,7 @@ public class CharterController : MonoBehaviour, IDamageable
     }
     private void UpdateIdleState()
     {
-        if (canMove)
+        if (canMove && !isKnockback)
         {
             if (movementDirection != 0)
             {
@@ -453,6 +447,16 @@ public class CharterController : MonoBehaviour, IDamageable
     {
         isMoving = false;
         anim.SetBool("Move", false);
+    }
+
+    private void Flip()
+    {
+        if (!isAttack)
+        {
+            facingRight = !facingRight;
+
+            transform.Rotate(0, 180, 0);
+        }
     }
 
     #endregion
@@ -656,6 +660,7 @@ public class CharterController : MonoBehaviour, IDamageable
     [SerializeField] private float knockbackDuration = 0.5f;
     private float knockbackTimeLeft = 0;
     private bool isKnockback = false;
+    [SerializeField] private ParticleSystem bloodPartical;
 
     private void EnterKnockBackState()
     {
@@ -674,8 +679,8 @@ public class CharterController : MonoBehaviour, IDamageable
 
         if (knockbackTimeLeft >= knockbackDuration)
         {
-            rb.velocity = Vector2.zero;
             SwitchState(State.idle);
+            rb.velocity = Vector2.zero;
         }
 
     }
@@ -724,14 +729,17 @@ public class CharterController : MonoBehaviour, IDamageable
     #region DrinkEstus
 
     [Header("Estus Parametrs")]
+    [SerializeField] private ParticleSystem healPartical;
     [SerializeField] private float drinkEstusDuration = 3f;
     [SerializeField] private int healingPower = 3;
+    private bool successDrink = false;
     private float drinkEstusTimeLeft;
     private bool isDrinking = false;
 
     private void EnterEstusState()
     {
         drinkEstusTimeLeft = 0;
+        successDrink = false;
         canMove = false;
         canJump = false;
         isDrinking = true;
@@ -746,17 +754,24 @@ public class CharterController : MonoBehaviour, IDamageable
         drinkEstusTimeLeft += Time.deltaTime;
         if (drinkEstusTimeLeft >= defenseDuration)
         {
+            successDrink = true;
             SwitchState(State.idle);
         }
 
     }
     private void ExitEstusState()
     {
-        TakeDamage(healingPower, false);
+
         anim.SetBool("Estus", false);
+        if (successDrink)
+        {
+            TakeDamage(healingPower, false);
+        }
         canMove = true;
         canJump = true;
+        successDrink = false;
         isDrinking = false;
+
     }
 
     #endregion
@@ -859,7 +874,7 @@ public class CharterController : MonoBehaviour, IDamageable
             {
                 SwitchState(State.knockBack);
                 currentHealth -= damage;
-
+                Instantiate(bloodPartical, transform.position, bloodPartical.transform.rotation);
             }
             if (isDefense)
             {
@@ -870,6 +885,7 @@ public class CharterController : MonoBehaviour, IDamageable
         {
             currentHealth += damage;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            Instantiate(healPartical, transform.position, bloodPartical.transform.rotation);
         }
         healthBar.SetHealth(currentHealth);
 

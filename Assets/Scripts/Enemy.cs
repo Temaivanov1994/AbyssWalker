@@ -35,12 +35,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool isWallDetected;
 
 
-
-
-
     [Space]
     [SerializeField]
-    private GameObject hitPartical;
+    private ParticleSystem bloodPartical;
     private Rigidbody2D rb;
     private Animator anim;
     [SerializeField] private HealthBar healthBar;
@@ -59,6 +56,7 @@ public class Enemy : MonoBehaviour, IDamageable
         healthBar.SetMaxHealth(maxHealth, currentHealth);
         healthBar.SetHealth(currentHealth);
         SwitchState(State.SerchPlayer);
+        bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Blood");
 
 
     }
@@ -581,8 +579,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         isDead = true;
         anim.SetBool("Dead", true);
-
-
+        healthBar.enabled = false;
+        
 
     }
     private void UpdateDeadState()
@@ -592,6 +590,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     private void ExitDeadState()
     {
+        healthBar.enabled = true;
         isDead = false;
     }
     #endregion
@@ -640,6 +639,7 @@ public class Enemy : MonoBehaviour, IDamageable
             currentHealth -= damage;
             if (!isDead)
             {
+                Instantiate(bloodPartical, transform.position, bloodPartical.transform.rotation);
                 SwitchState(State.TakeDamage);
             }
         }
@@ -649,8 +649,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
         }
 
-
+        if(isDead != true)
+        {
         healthBar.ShowFloatingText(damage, transform);
+
+        }
         healthBar.SetHealth(currentHealth);
     }
 

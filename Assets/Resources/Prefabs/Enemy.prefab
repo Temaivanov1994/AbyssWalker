@@ -93,11 +93,11 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  hitPartical: {fileID: 0}
+  bloodPartical: {fileID: 0}
   healthBar: {fileID: 0}
-  maxHealth: 6
+  maxHealth: 10
   stunMaxHealth: 3
-  attackDamage: 1
+  attackDamage: 4
   knockbackForce: 300
   IdleMinTimeDuration: 1
   IdleMaxTimeDuration: 3
