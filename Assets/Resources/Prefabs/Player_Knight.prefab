@@ -1317,7 +1317,7 @@ MonoBehaviour:
   groundCheckRaduis: 0.18
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   wallCheckPoint: {fileID: 264502334316530098}
   wallCheckDistance: 0.5
   whatIsWall:
@@ -1351,7 +1351,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   jumpButton: 0
-  defenseDuration: 1
+  defenseDuration: 0.5
   groundAttackDuration: 0.917
   attackSpeed: 4
   flyAttackDuration: 0.417

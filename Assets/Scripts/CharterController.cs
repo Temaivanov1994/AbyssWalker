@@ -18,6 +18,7 @@ public class CharterController : MonoBehaviour, IDamageable
         InitStaminaBar();
         bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Blood");
         healPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Heal");
+        OnLandingParticleSystem = Resources.Load<ParticleSystem>("Charters/ParticalSystems/OnLanding");
 
         SwitchState(State.idle);
     }
@@ -467,6 +468,7 @@ public class CharterController : MonoBehaviour, IDamageable
     [SerializeField] private float jumpForce = 750f;
     [Range(0.1f, 0.9f)] [SerializeField] private float variableJumpHeightMultiplier;
     public UnityEvent OnLandEvent;
+    private ParticleSystem OnLandingParticleSystem;
     private bool canJump = true;
     private bool isJump = false;
     [SerializeField] private bool jumpButton = false;
@@ -504,7 +506,7 @@ public class CharterController : MonoBehaviour, IDamageable
     public void OnlandingEvent()
     {
         SwitchState(State.idle);
-        // TODO: Create landing effect
+        Instantiate(OnLandingParticleSystem, transform.position, OnLandingParticleSystem.transform.rotation);
     }
     #endregion
 
