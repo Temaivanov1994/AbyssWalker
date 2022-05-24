@@ -293,7 +293,7 @@ public class Enemy : MonoBehaviour, IDamageable
     #region StunState
 
     [Header("StunState")]
-    [SerializeField] private float stunDuration = 5f;
+    [SerializeField] private float stunDuration = 2f;
     private float stunTimeLeft;
     private void EnterStunState()
     {
@@ -459,6 +459,7 @@ public class Enemy : MonoBehaviour, IDamageable
     #region MelleAttack
 
     [Header("MelleAttack")]
+    [SerializeField] private AttackType attackType;
     [SerializeField] private Transform melleAttackPoint;
     [SerializeField] private float melleAttackRadius = 0.84f;
 
@@ -468,6 +469,12 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float attackCooldown;
     private float attackCooldownTimeLeft = 0;
     private float attackTimeLeft = 0;
+
+    [Header("BlowAttack")]
+    [SerializeField] private float blowAttackRadius = 1f;
+    [SerializeField] private bool isDetectedPlayerInRadius;
+
+
     private void EnterMelleAttackState()
     {
         anim.SetBool("MelleAttack", true);
@@ -480,19 +487,42 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     private void UpdateMelleAttackState()
     {
-
-        if (attackTimeLeft >= attackDuration)
+        switch (attackType)
         {
-            if (attackCooldownTimeLeft >= attackCooldown)
-            {
-                SwitchState(State.SerchPlayer);
+            case AttackType.melleAttack:
 
-            }
-            else
-            {
-                SwitchState(State.Idle);
-            }
+                if (attackTimeLeft >= attackDuration)
+                {
+                    if (attackCooldownTimeLeft >= attackCooldown)
+                    {
+                        SwitchState(State.SerchPlayer);
+                    }
+                    else
+                    {
+                        SwitchState(State.Idle);
+                    }
 
+                }
+                break;
+            case AttackType.rangeAttack:
+
+                break;
+            case AttackType.blow:
+
+                if (attackTimeLeft >= attackDuration)
+                {
+                    if (attackCooldownTimeLeft >= attackCooldown)
+                    {
+                        SwitchState(State.SerchPlayer);
+                    }
+                    else
+                    {
+                        SwitchState(State.Idle);
+                    }
+
+                }
+                
+                break;
         }
 
         attackCooldownTimeLeft += Time.deltaTime;
@@ -516,6 +546,22 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 knockbackDirection = target.transform.position - transform.position;
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
         }
+    }
+
+    public void Blow()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(transform.position, blowAttackRadius, whatIsPlayer);
+
+        foreach (Collider2D target in hitEnemy)
+        {
+            Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
+
+            target.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
+            Vector2 knockbackDirection = target.transform.position - transform.position;
+            rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
+        }
+       /* currentHealth = 0;
+        SwitchState(State.Dead);*/
     }
 
     #endregion
@@ -570,6 +616,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     #endregion
 
+
     #region Dead
 
     [Header("DeadParametrs")]
@@ -580,7 +627,7 @@ public class Enemy : MonoBehaviour, IDamageable
         isDead = true;
         anim.SetBool("Dead", true);
         healthBar.enabled = false;
-        
+
 
     }
     private void UpdateDeadState()
@@ -601,12 +648,26 @@ public class Enemy : MonoBehaviour, IDamageable
         /* attackPlayeDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);*/
         isDetectedPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
         isAttackPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
-
+        isDetectedPlayerInRadius = CheckPlayerInRadius();
     }
 
 
 
+    private bool CheckPlayerInRadius()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(transform.position, blowAttackRadius / 2, whatIsPlayer);
 
+        foreach (Collider2D target in hitEnemy)
+        {
+            if (target != null)
+            {
+                return true;
+            }
+
+
+        }
+        return false;
+    }
 
 
     private void Flip()
@@ -626,8 +687,20 @@ public class Enemy : MonoBehaviour, IDamageable
         Gizmos.DrawLine(playerCheckPoint.position + (Vector3)Vector2.down * -0.2f, playerCheckPoint.position + (Vector3)Vector2.right * playerCheckInMaxAgroDistance * facingDirection + (Vector3)Vector2.down * -0.2f);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(playerCheckPoint.position, playerCheckPoint.position + (Vector3)Vector2.right * playerCheckInCloseRangeAction * facingDirection);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(melleAttackPoint.position, melleAttackRadius);
+        if (attackType == AttackType.melleAttack)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(melleAttackPoint.position, melleAttackRadius);
+        }
+        else if (attackType == AttackType.rangeAttack)
+        {
+
+        }
+        else if (attackType == AttackType.blow)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, blowAttackRadius);
+        }
 
     }
 
@@ -637,10 +710,12 @@ public class Enemy : MonoBehaviour, IDamageable
         if (isDamage)
         {
             currentHealth -= damage;
+            stunCurrentHealth -= damage;
             if (!isDead)
             {
                 Instantiate(bloodPartical, transform.position, bloodPartical.transform.rotation);
                 SwitchState(State.TakeDamage);
+
             }
         }
         else
@@ -649,9 +724,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         }
 
-        if(isDead != true)
+        if (isDead != true)
         {
-        healthBar.ShowFloatingText(damage, transform);
+            healthBar.ShowFloatingText(damage, transform);
 
         }
         healthBar.SetHealth(currentHealth);
@@ -660,4 +735,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
 }
 
-
+public enum AttackType
+{
+    melleAttack,
+    rangeAttack,
+    blow
+}

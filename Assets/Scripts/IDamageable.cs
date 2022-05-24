@@ -1,7 +1,7 @@
 public interface IDamageable
 {
      
-    public void TakeDamage(int damage ,bool isDamage);
+    public void TakeDamage(int damage , bool isDamage);
 
 
 
