@@ -16,7 +16,7 @@ public class boxBehavour : MonoBehaviour
 
     private void Awake()
     {
-        OnLandingParticleSystem = Resources.Load<ParticleSystem>("Charters/ParticalSystems/OnLanding");
+        OnLandingParticleSystem = Resources.Load<ParticleSystem>("Charters/ParticalSystems and effects/OnLanding");
     }
     private void Start()
     {

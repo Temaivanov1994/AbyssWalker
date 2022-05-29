@@ -33,11 +33,14 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask whatIsPlayer;
     private bool isGroundDetected;
     private bool isWallDetected;
+    private bool isAttackPlayerDistance;
+    private bool isScaredPlayerDistance;
 
 
     [Space]
     [SerializeField]
     private ParticleSystem bloodPartical;
+    private ParticleSystem blowPartical;
     private Rigidbody2D rb;
     private Animator anim;
     [SerializeField] private HealthBar healthBar;
@@ -56,13 +59,14 @@ public class Enemy : MonoBehaviour, IDamageable
         healthBar.SetMaxHealth(maxHealth, currentHealth);
         healthBar.SetHealth(currentHealth);
         SwitchState(State.SerchPlayer);
-        bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems/Particle System Blood");
+        bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems and effects/Particle System Blood");
+        blowPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems and effects/Particle System Blow");
 
 
     }
     private void Update()
     {
-
+       
 
         StateMachine();
         Detecting();
@@ -350,7 +354,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             movement.Set(chargeMoveSpeed * facingDirection, rb.velocity.y);
             rb.velocity = movement;
-            if (isAttackPlayerDistance)
+            if (isAttackPlayerDistance && !isAttack)
             {
                 SwitchState(State.MelleAttack);
             }
@@ -383,7 +387,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             SwitchState(State.Charge);
         }
-        else if (isAttackPlayerDistance)
+        else if (isAttackPlayerDistance && !isAttack)
         {
             SwitchState(State.MelleAttack);
         }
@@ -456,14 +460,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     #endregion  
 
-    #region MelleAttack
+    #region Attack
 
     [Header("MelleAttack")]
     [SerializeField] private AttackType attackType;
-    [SerializeField] private Transform melleAttackPoint;
+    [SerializeField] private Transform attackPoint;
     [SerializeField] private float melleAttackRadius = 0.84f;
 
-    private bool isAttackPlayerDistance;
+   
     [SerializeField] private bool isAttack = false;
     [SerializeField] private float attackDuration;
     [SerializeField] private float attackCooldown;
@@ -474,6 +478,11 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private float blowAttackRadius = 1f;
     [SerializeField] private bool isDetectedPlayerInRadius;
 
+    [Header("RangeAttack")]
+
+    [SerializeField] private GameObject projectTile;
+    [SerializeField] private float speedProjectTile;
+    [SerializeField] private float travelDistanceProjectTile;
 
     private void EnterMelleAttackState()
     {
@@ -493,6 +502,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
                 if (attackTimeLeft >= attackDuration)
                 {
+
                     if (attackCooldownTimeLeft >= attackCooldown)
                     {
                         SwitchState(State.SerchPlayer);
@@ -505,12 +515,9 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
                 break;
             case AttackType.rangeAttack:
-
-                break;
-            case AttackType.blow:
-
                 if (attackTimeLeft >= attackDuration)
                 {
+
                     if (attackCooldownTimeLeft >= attackCooldown)
                     {
                         SwitchState(State.SerchPlayer);
@@ -521,7 +528,19 @@ public class Enemy : MonoBehaviour, IDamageable
                     }
 
                 }
-                
+               
+                break;
+            case AttackType.blow:
+
+                if (attackTimeLeft <= attackDuration)
+                {
+                    if (!isDetectedPlayerInRadius)
+                    {
+                        SwitchState(State.SerchPlayer);
+                    }
+
+                }
+
                 break;
         }
 
@@ -534,21 +553,38 @@ public class Enemy : MonoBehaviour, IDamageable
         anim.SetBool("MelleAttack", false);
     }
 
-    public void Attack()
+    public void SwitcherAttackType()
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(melleAttackPoint.position, melleAttackRadius, whatIsPlayer);
+        switch (attackType)
+        {
+            case AttackType.melleAttack:
+                MelleAttack();
+                break;
+            case AttackType.rangeAttack:
+                RangeAttack();
+                break;
+            case AttackType.blow:
+                Blow();
+                break;
+        }
+    }
+
+    private void MelleAttack()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(attackPoint.position, melleAttackRadius, whatIsPlayer);
 
         foreach (Collider2D target in hitEnemy)
         {
             Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
 
             target.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
-            Vector2 knockbackDirection = target.transform.position - transform.position;
+            Vector2 knockbackDirection = new Vector2(target.transform.position.x - transform.position.x, 1.5f);
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
+
         }
     }
 
-    public void Blow()
+    private void Blow()
     {
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(transform.position, blowAttackRadius, whatIsPlayer);
 
@@ -560,10 +596,17 @@ public class Enemy : MonoBehaviour, IDamageable
             Vector2 knockbackDirection = target.transform.position - transform.position;
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
         }
-       /* currentHealth = 0;
-        SwitchState(State.Dead);*/
+        currentHealth = 0;
+        Instantiate(blowPartical, transform.position, blowPartical.transform.rotation);
+        StartCoroutine(CameraManager.instance.CameraShake(0.2f, 2));
+        SwitchState(State.Dead);
     }
 
+    private void RangeAttack()
+    {
+        GameObject _projectTile = Instantiate(projectTile, attackPoint.position, attackPoint.rotation);
+        _projectTile.GetComponent<ProjectTileBehavor>().FireProjectTile(travelDistanceProjectTile, attackDamage);
+    }
     #endregion
 
     #region TakeDamage
@@ -587,7 +630,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (takeDamageTimeLeft >= takeDamageDuration)
         {
-            if (knockbackTimeLeft >= knockbackDuration && currentHealth > 0)
+            if (knockbackTimeLeft >= knockbackDuration && currentHealth > 0 && isGroundDetected)
             {
 
                 if (stunCurrentHealth <= 0)
@@ -617,6 +660,7 @@ public class Enemy : MonoBehaviour, IDamageable
     #endregion
 
 
+
     #region Dead
 
     [Header("DeadParametrs")]
@@ -626,8 +670,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         isDead = true;
         anim.SetBool("Dead", true);
+        this.gameObject.layer = 11;
         healthBar.enabled = false;
-
 
     }
     private void UpdateDeadState()
@@ -637,6 +681,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     private void ExitDeadState()
     {
+        this.gameObject.layer = 7;
         healthBar.enabled = true;
         isDead = false;
     }
@@ -645,7 +690,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         isGroundDetected = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, groundCheckDistance, whatIsGround);
         isWallDetected = Physics2D.Raycast(wallCheckPoint.position, transform.right, wallCheckDistance, whatIsGround);
-        /* attackPlayeDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);*/
+        isScaredPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMinAgroDistance, whatIsPlayer);
         isDetectedPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInMaxAgroDistance, whatIsPlayer);
         isAttackPlayerDistance = Physics2D.Raycast(playerCheckPoint.position, transform.right, playerCheckInCloseRangeAction, whatIsPlayer);
         isDetectedPlayerInRadius = CheckPlayerInRadius();
@@ -655,7 +700,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private bool CheckPlayerInRadius()
     {
-        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(transform.position, blowAttackRadius / 2, whatIsPlayer);
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(transform.position, blowAttackRadius, whatIsPlayer);
 
         foreach (Collider2D target in hitEnemy)
         {
@@ -690,7 +735,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (attackType == AttackType.melleAttack)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(melleAttackPoint.position, melleAttackRadius);
+            Gizmos.DrawWireSphere(attackPoint.position, melleAttackRadius);
         }
         else if (attackType == AttackType.rangeAttack)
         {

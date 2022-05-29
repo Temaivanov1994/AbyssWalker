@@ -9,17 +9,30 @@ public class Spikes : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRaduis = 0.18f;
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private bool isDetectingGround;
-    [SerializeField] int currentRorate = 0;
+    private bool isDetectingGround;
+    int currentRorate = 0;
+    [SerializeField] Sprite[] spikeSprites;
+    private SpriteRenderer spriteRenderer;
 
+
+
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Start()
     {
+        int randomSprite = Random.Range(0, spikeSprites.Length);
+        spriteRenderer.sprite = spikeSprites[randomSprite];
         SetRotation();
+
+
 
     }
 
 
-    
+
 
 
     private bool CheckGround()
@@ -44,20 +57,20 @@ public class Spikes : MonoBehaviour
 
     private void SetRotation()
     {
-        
+
         isDetectingGround = CheckGround();
-        if (!isDetectingGround && currentRorate<=4)
+        if (!isDetectingGround && currentRorate <= 4)
         {
             transform.Rotate(0, 0, 90);
             currentRorate += 1;
             SetRotation();
 
         }
-        else if(currentRorate>=4)
+        else if (currentRorate >= 4)
         {
             Destroy(gameObject);
         }
-       
+
 
 
     }

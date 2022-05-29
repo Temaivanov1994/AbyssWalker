@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ProjectTile
+  - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - Enemy
   - Player
   - MovingBlock
-  - 
-  - 
+  - ProjectTile
+  - Dead
   - 
   - 
   - 
@@ -40,6 +43,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: WorldObjects
+    uniqueID: 2393808371
+    locked: 0
+  - name: Enemy
+    uniqueID: 945742195
     locked: 0
   - name: Hero
     uniqueID: 876986771

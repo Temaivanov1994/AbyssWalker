@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  maxStamina: 50
+  maxStamina: 500
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
   groundAttackStaminaCost: 20
@@ -749,10 +749,10 @@ MonoBehaviour:
   isDetectingEnemy: 0
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   movementSpeed: 400
   movementSmoothing: 0.05
-  jumpForce: 750
+  jumpForce: 600
   variableJumpHeightMultiplier: 0.5
   OnLandEvent:
     m_PersistentCalls:
@@ -776,6 +776,7 @@ MonoBehaviour:
   flyAttackDuration: 0.417
   attackPoint: {fileID: 5484742207812079481}
   attackRaduis: 0.3
+  comboAttack: 0
   knockbackDuration: 0.2
   bloodPartical: {fileID: 0}
   healPartical: {fileID: 0}
@@ -846,7 +847,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 876986771
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -8227493851329493928, guid: 1295edc92cce59b44a17886909d11441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1294,7 +1295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5484742208764450146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.376, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5484742209695342985}

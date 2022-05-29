@@ -1330,10 +1330,10 @@ MonoBehaviour:
   isDetectingEnemy: 0
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   movementSpeed: 400
   movementSmoothing: 0.05
-  jumpForce: 750
+  jumpForce: 600
   variableJumpHeightMultiplier: 0.5
   OnLandEvent:
     m_PersistentCalls:
@@ -1427,7 +1427,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 876986771
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7055487659445311390, guid: b0d797680af22cb40b979f0c9194c657, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
