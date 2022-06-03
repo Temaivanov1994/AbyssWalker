@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamageable
+[RequireComponent(typeof (CreatureStats))]
+public class Enemy : MonoBehaviour
 {
 
 
@@ -16,7 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable
      [SerializeField] private AudioSource hurtSound;
      [SerializeField] private AudioSource detectSound;*/
 
-
+    [SerializeField] private CreatureStats creatureStats;
 
 
     [Header("Checks")]
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private LayerMask whatIsPlayer;
+
     private bool isGroundDetected;
     private bool isWallDetected;
     private bool isAttackPlayerDistance;
@@ -39,27 +41,25 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [Space]
     [SerializeField]
-    private ParticleSystem bloodPartical;
+   
     private ParticleSystem blowPartical;
     private Rigidbody2D rb;
     private Animator anim;
-    [SerializeField] private HealthBar healthBar;
+   
 
 
     private void Awake()
     {
+        creatureStats = GetComponent<CreatureStats>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        healthBar = GetComponentInChildren<HealthBar>();
+       
     }
     private void Start()
     {
-        currentHealth = maxHealth;
-        stunCurrentHealth = stunMaxHealth;
-        healthBar.SetMaxHealth(maxHealth, currentHealth);
-        healthBar.SetHealth(currentHealth);
+       
         SwitchState(State.SerchPlayer);
-        bloodPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems and effects/Particle System Blood");
+        
         blowPartical = Resources.Load<ParticleSystem>("Charters/ParticalSystems and effects/Particle System Blow");
 
 
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
         }
     }
-    private void SwitchState(State state)
+    public void SwitchState(State state)
     {
         switch (currentState)
         {
@@ -182,7 +182,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    private enum State
+    public enum State
     {
         Idle,
         Walk,
@@ -201,13 +201,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     #region Stats
 
-    [Header("Enemy Stats")]
-    [SerializeField]
-    private int maxHealth = 5;
-    private int currentHealth;
-    [SerializeField]
-    private int stunMaxHealth = 3;
-    private int stunCurrentHealth;
+    
 
     [Header("Battle Stats")]
     [SerializeField] private int attackDamage = 1;
@@ -305,7 +299,7 @@ public class Enemy : MonoBehaviour, IDamageable
         movement.Set(0, rb.velocity.y);
         rb.velocity = movement;
         anim.SetBool("Stun", true);
-        stunCurrentHealth = stunMaxHealth;
+        creatureStats.RecoveryStunHealth();
     }
     private void UpdateStunState()
     {
@@ -577,7 +571,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
 
-            target.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
+            target.GetComponent<IDamageable>().TakeDamage(attackDamage, DamageType.physical);
             Vector2 knockbackDirection = new Vector2(target.transform.position.x - transform.position.x, 1.5f);
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
 
@@ -592,11 +586,11 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Rigidbody2D rbTarget = target.GetComponent<Rigidbody2D>();
 
-            target.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
+            target.GetComponent<IDamageable>().TakeDamage(attackDamage, DamageType.magical);
             Vector2 knockbackDirection = target.transform.position - transform.position;
             rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
         }
-        currentHealth = 0;
+        creatureStats.currentHealth = 0;
         Instantiate(blowPartical, transform.position, blowPartical.transform.rotation);
         StartCoroutine(CameraManager.instance.CameraShake(0.2f, 2));
         SwitchState(State.Dead);
@@ -630,10 +624,10 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (takeDamageTimeLeft >= takeDamageDuration)
         {
-            if (knockbackTimeLeft >= knockbackDuration && currentHealth > 0 && isGroundDetected)
+            if (knockbackTimeLeft >= knockbackDuration && creatureStats.currentHealth > 0 && isGroundDetected)
             {
 
-                if (stunCurrentHealth <= 0)
+                if (creatureStats.currentStunHealth <= 0)
                 {
 
                     SwitchState(State.Stun);
@@ -643,7 +637,7 @@ public class Enemy : MonoBehaviour, IDamageable
                     SwitchState(State.SerchPlayer);
                 }
             }
-            else if (currentHealth <= 0)
+            else if (creatureStats.currentHealth <= 0)
             {
                 SwitchState(State.Dead);
             }
@@ -670,9 +664,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
         isDead = true;
         anim.SetBool("Dead", true);
-        this.gameObject.layer = 11;
-        healthBar.enabled = false;
-
+        this.gameObject.layer = LayerMask.NameToLayer("Dead");
+        
     }
     private void UpdateDeadState()
     {
@@ -681,8 +674,8 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     private void ExitDeadState()
     {
-        this.gameObject.layer = 7;
-        healthBar.enabled = true;
+        this.gameObject.layer = LayerMask.NameToLayer("Enemy");
+       /* creatureStats.healthBar.enabled = true;*/
         isDead = false;
     }
     #endregion
@@ -749,33 +742,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    public void TakeDamage(int damage, bool isDamage)
-    {
-
-        if (isDamage)
-        {
-            currentHealth -= damage;
-            stunCurrentHealth -= damage;
-            if (!isDead)
-            {
-                Instantiate(bloodPartical, transform.position, bloodPartical.transform.rotation);
-                SwitchState(State.TakeDamage);
-
-            }
-        }
-        else
-        {
-            currentHealth += damage;
-
-        }
-
-        if (isDead != true)
-        {
-            healthBar.ShowFloatingText(damage, transform);
-
-        }
-        healthBar.SetHealth(currentHealth);
-    }
+    
 
 
 }

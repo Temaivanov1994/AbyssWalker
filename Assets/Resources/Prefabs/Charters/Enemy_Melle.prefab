@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04515b5e1873fe49994a83c343778f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creatureStats: {fileID: 0}
   groundCheckDistance: 0.25
   wallCheckDistance: 0.25
   playerCheckInCloseRangeAction: 1
@@ -274,10 +275,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
-  bloodPartical: {fileID: 0}
-  healthBar: {fileID: 0}
-  maxHealth: 5
-  stunMaxHealth: 3
+  blowPartical: {fileID: 0}
   attackDamage: 4
   knockbackForce: 300
   IdleMinTimeDuration: 1

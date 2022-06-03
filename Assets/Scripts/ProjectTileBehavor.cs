@@ -72,7 +72,7 @@ public class ProjectTileBehavor : MonoBehaviour, IDamageable
         {
             if(collision.gameObject.TryGetComponent<IDamageable>(out IDamageable example))
             {
-                example.TakeDamage(damage, true);
+                example.TakeDamage(damage, DamageType.physical);
             }
           
         }
@@ -102,7 +102,7 @@ public class ProjectTileBehavor : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage, bool isDamage)
+    public void TakeDamage(int damage, DamageType damageType)
     {
         rb.gravityScale = 2;
         isFly = true;

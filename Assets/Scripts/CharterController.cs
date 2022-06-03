@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharterController : MonoBehaviour, IDamageable
+public class CharterController : MonoBehaviour
 {
     private void Awake()
     {
@@ -663,13 +663,13 @@ public class CharterController : MonoBehaviour, IDamageable
 
                 if (enemy.CompareTag("ProjectTile"))
                 {
-                    enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage, true);
+                    enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage, DamageType.physical);
                     Vector2 knockbackDirection = new Vector2(rbTarget.transform.position.x - transform.position.x, 0.5f);
                     rbTarget.AddForce(knockbackDirection.normalized * knockbackForce * 3);
                 }
                 else if (enemy.CompareTag("Enemy"))
                 {
-                    enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage, true);
+                    enemy.GetComponent<IDamageable>().TakeDamage(groundAttackDamage, DamageType.physical);
                     Vector2 knockbackDirection = new Vector2(rbTarget.transform.position.x - transform.position.x, 1f);
                     rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
                 }
@@ -678,7 +678,7 @@ public class CharterController : MonoBehaviour, IDamageable
             }
             else
             {
-                enemy.GetComponent<IDamageable>().TakeDamage(flyAttackDamage, true);
+                enemy.GetComponent<IDamageable>().TakeDamage(flyAttackDamage, DamageType.physical);
                 Vector2 knockbackDirection = new Vector2(rbTarget.transform.position.x - transform.position.x, 1f);
                 rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);
             }

@@ -81,7 +81,7 @@ public class Spikes : MonoBehaviour
             Rigidbody2D rbTarget = collision.GetComponent<Rigidbody2D>();
             if (rbTarget.velocity.y < -5f)
             {
-                collision.GetComponent<IDamageable>().TakeDamage(attackDamage, true);
+                collision.GetComponent<IDamageable>().TakeDamage(attackDamage, DamageType.physical);
 
                 Vector2 knockbackDirection = collision.transform.position - transform.position;
                 rbTarget.AddForce(knockbackDirection.normalized * knockbackForce);

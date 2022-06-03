@@ -301,6 +301,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 532f587baa872e847a31db0df58cd41a, type: 3}
+--- !u!1 &402598378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5822162812632172641, guid: 19086ad6df3670c4b9727ebfb01ecdc2, type: 3}
+  m_PrefabInstance: {fileID: 5822162813626592052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &402598385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402598378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f179c68f04768844adc3fbee7bd95f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  maxStunHealth: 3
+  currentStunHealth: 0
+  armor: 0
+  magicalResistance: 0
+  healthBar: {fileID: 0}
+  bloodPartical: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!1 &478521445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5936371097564910331, guid: d03af30d9e32a404ea6a20c5f2f21869, type: 3}
+  m_PrefabInstance: {fileID: 7412164280256483523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &478521452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478521445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f179c68f04768844adc3fbee7bd95f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  maxStunHealth: 3
+  currentStunHealth: 0
+  armor: 1
+  magicalResistance: 3
+  healthBar: {fileID: 0}
+  bloodPartical: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +471,32 @@ Transform:
   m_Father: {fileID: 1120348302}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &744683919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1360361012731677102, guid: 0575cb06f27425b4d90669003d571e01, type: 3}
+  m_PrefabInstance: {fileID: 1360361013726460792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &744683926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744683919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f179c68f04768844adc3fbee7bd95f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  maxStunHealth: 3
+  currentStunHealth: 0
+  armor: 1
+  magicalResistance: 3
+  healthBar: {fileID: 0}
+  bloodPartical: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &841505148
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +624,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8909285175837970585, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8909285175837970661, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
       propertyPath: m_Name
       value: Spikes (2)
@@ -603,6 +685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8909285175837970585, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8909285175837970661, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
       propertyPath: m_Name
       value: Spikes (1)
@@ -775,6 +861,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8909285175837970585, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8909285175837970661, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
       propertyPath: m_Name
       value: Spikes
@@ -832,6 +922,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8909285175837970585, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8909285175837970661, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
       propertyPath: m_Name
       value: Spikes (3)
@@ -3819,6 +3913,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8909285175837970585, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8909285175837970661, guid: 01b9bc8ed71c0ba438757e502527b073, type: 3}
       propertyPath: m_Name
       value: Spikes (4)
